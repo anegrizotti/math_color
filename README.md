@@ -1,4 +1,4 @@
-<h1>MathColor: Uma Aplicação para o Aprendizado de Matemática nos Anos Iniciais</h1>
+<h1>MathColor: Uma Aplicação para o Aprendizado de Matemática nos Anos Iniciais ⚒️ EM DESENVOLVIMENTO ⚒️</h1>
 
 <p>O MathColor é um aplicativo móvel divertido e educativo que tem como objetivo incentivar crianças no estudo da matemática. Com o MathColor, as crianças podem aprender matemática enquanto se divertem colorindo imagens adoráveis. O aplicativo é adequado para crianças do Ensino Fundamental I.</p>
 
