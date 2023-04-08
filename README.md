@@ -8,9 +8,8 @@
 <h2>Recursos</h2>
 <ul>
   <li>Uma variedade de imagens divertidas para colorir</li>
-  <li>Problemas matemáticos adequados para crianças de todas as idades e níveis de habilidade</li>
+  <li>Problemas matemáticos adequados para crianças do Ensino Fundamental I</li>
   <li>Cores adicionais para desbloquear conforme as crianças resolvem problemas matemáticos</li>
-  <li>Opção para salvar e compartilhar imagens coloridas</li>
   <li>Interface de usuário amigável e fácil de usar</li>
 </ul>
 
