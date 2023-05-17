@@ -70,9 +70,13 @@ class MyApp extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     primary: Color(0xFFB6D993),
                     onPrimary: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
                   ),
-                  child: const Text('Iniciar', style: TextStyle(fontSize: 30)),
+                  child: const Text('INICIAR', style: TextStyle(fontSize: 30)),
                 ),
+
                 SizedBox(height: 50),
                 Image.asset(
                   path.join('lib', 'assets', 'telainicial.png'),
