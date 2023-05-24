@@ -53,11 +53,19 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - lib/assets/telainicial.png
+    - lib/assets/imagens/telainicial.png
+    - lib/assets/imagens/Contagem.png
+    - lib/assets/imagens/adicao.png
+    - lib/assets/imagens/subtracao.png
+    - lib/assets/imagens/multiplicacao.png
+    - lib/assets/imagens/divisao.png
   fonts:
   - family: bungee
     fonts:
       - asset: lib/assets/fonts/Bungee-Regular.ttf
+  - family: craft
+    fonts:
+      - asset: lib/assets/fonts/CraftyGirls-Regular.ttf
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

@@ -97,7 +97,7 @@ class MyApp extends StatelessWidget {
                     SizedBox(height: screenHeight * 0.03),
                     Expanded(
                       child: Image.asset(
-                        path.join('lib', 'assets', 'telainicial.png'),
+                        path.join('lib', 'assets', 'imagens','telainicial.png'),
                         fit: BoxFit.contain,
                         height: screenHeight * 0.3,
                       ),
