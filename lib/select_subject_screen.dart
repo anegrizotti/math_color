@@ -71,7 +71,7 @@ class SelectSubjectScreen extends StatelessWidget {
             ),
           ),
           Container(
-            alignment: Alignment.centerLeft,
+            alignment: Alignment.center,
             padding: EdgeInsets.all(70),
             child: Text(
               'SELECIONE UM ASSUNTO: ',
@@ -126,87 +126,274 @@ class SelectSubjectScreen extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(bottom: screenHeight * 0.03),
-            child: Row(children: [
-              TextButton.icon(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => SelectSubjectScreen()),
-                  );
-                },
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Color(0xFFC7EBF2)),
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.black),
-                  side: MaterialStateProperty.all<BorderSide>(
-                    BorderSide(color: Colors.black, width: 2),
-                  ),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(screenHeight * 0.03),
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SelectSubjectScreen()),
+                      );
+                    },
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Color(0xFFC7EBF2)),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.black),
+                      side: MaterialStateProperty.all<BorderSide>(
+                        BorderSide(color: Colors.black, width: 2),
+                      ),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(screenHeight * 0.04),
+                        ),
+                      ),
+                    ),
+                    icon: Image.asset(
+                      path.join(
+                          'lib', 'assets', 'imagens', 'adicao.png'),
+                      width: screenHeight * 0.235,
+                      height: screenWidth * 0.1,
+                    ),
+                    label: Text(
+                      '',
+                      style: TextStyle(
+                        color: Color(0xFFFB6D993),
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'craft',
+                        fontSize: screenHeight * 0.01,
+                        decoration: TextDecoration.overline,
+                      ),
                     ),
                   ),
-                ),
-                icon: Image.asset(
-                  path.join('lib', 'assets', 'imagens', 'adicao.png'),
-                  width: screenHeight * 0.19, // Largura desejada da imagem
-                  height: screenWidth * 0.1, // Altura desejada da imagem
-                ),
-                label: Text(
-                  '',
-                  style: TextStyle(
-                    color: Color(0xFFFB6D993),
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'craft',
-                    fontSize: screenHeight * 0.01,
-                    decoration: TextDecoration.overline,
-                  ),
-                ),
-              ),
-              SizedBox(width: 10),
-              TextButton.icon(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => SelectSubjectScreen()),
-                  );
-                },
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Color(0xFFC7EBF2)),
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.black),
-                  side: MaterialStateProperty.all<BorderSide>(
-                    BorderSide(color: Colors.black, width: 2),
-                  ),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(screenHeight * 0.03),
+                  SizedBox(width: 10),
+                  TextButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SelectSubjectScreen()),
+                      );
+                    },
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Color(0xFFC7EBF2)),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.black),
+                      side: MaterialStateProperty.all<BorderSide>(
+                        BorderSide(color: Colors.black, width: 2),
+                      ),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(screenHeight * 0.04),
+                        ),
+                      ),
+                    ),
+                    icon: Image.asset(
+                      path.join('lib', 'assets', 'imagens', 'subtracao.png'),
+                      width: screenHeight * 0.235,
+                      height: screenWidth * 0.1,
+                    ),
+                    label: Text(
+                      '',
+                      style: TextStyle(
+                        color: Color(0xFFFB6D993),
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'craft',
+                        fontSize: screenHeight * 0.01,
+                        decoration: TextDecoration.overline,
+                      ),
                     ),
                   ),
-                ),
-                icon: Image.asset(
-                  path.join('lib', 'assets', 'imagens', 'subtracao.png'),
-                  width: screenHeight * 0.19, // Largura desejada da imagem
-                  height: screenWidth * 0.1, // Altura desejada da imagem
-                ),
-                label: Text(
-                  '',
-                  style: TextStyle(
-                    color: Color(0xFFFB6D993),
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'craft',
-                    fontSize: screenHeight * 0.01,
-                    decoration: TextDecoration.overline,
-                  ),
-                ),
+                ],
               ),
-            ]),
+            ),
           ),
-          // Add other widgets here...
+          Padding(
+            padding: EdgeInsets.only(bottom: screenHeight * 0.03),
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SelectSubjectScreen()),
+                      );
+                    },
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Color(0xFFC7EBF2)),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.black),
+                      side: MaterialStateProperty.all<BorderSide>(
+                        BorderSide(color: Colors.black, width: 2),
+                      ),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(screenHeight * 0.04),
+                        ),
+                      ),
+                    ),
+                    icon: Image.asset(
+                      path.join(
+                          'lib', 'assets', 'imagens', 'multiplicacao.png'),
+                      width: screenHeight * 0.235,
+                      height: screenWidth * 0.1,
+                    ),
+                    label: Text(
+                      '',
+                      style: TextStyle(
+                        color: Color(0xFFFB6D993),
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'craft',
+                        fontSize: screenHeight * 0.01,
+                        decoration: TextDecoration.overline,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  TextButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SelectSubjectScreen()),
+                      );
+                    },
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Color(0xFFC7EBF2)),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.black),
+                      side: MaterialStateProperty.all<BorderSide>(
+                        BorderSide(color: Colors.black, width: 2),
+                      ),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(screenHeight * 0.04),
+                        ),
+                      ),
+                    ),
+                    icon: Image.asset(
+                      path.join('lib', 'assets', 'imagens', 'divisao.png'),
+                      width: screenHeight * 0.235,
+                      height: screenWidth * 0.1,
+                    ),
+                    label: Text(
+                      '',
+                      style: TextStyle(
+                        color: Color(0xFFFB6D993),
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'craft',
+                        fontSize: screenHeight * 0.01,
+                        decoration: TextDecoration.overline,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(bottom: screenHeight * 0.03),
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SelectSubjectScreen()),
+                      );
+                    },
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Color(0xFFC7EBF2)),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.black),
+                      side: MaterialStateProperty.all<BorderSide>(
+                        BorderSide(color: Colors.black, width: 2),
+                      ),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(screenHeight * 0.04),
+                        ),
+                      ),
+                    ),
+                    icon: Image.asset(
+                      path.join(
+                          'lib', 'assets', 'imagens', 'multiplicacao.png'),
+                      width: screenHeight * 0.235,
+                      height: screenWidth * 0.1,
+                    ),
+                    label: Text(
+                      '',
+                      style: TextStyle(
+                        color: Color(0xFFFB6D993),
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'craft',
+                        fontSize: screenHeight * 0.01,
+                        decoration: TextDecoration.overline,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  TextButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SelectSubjectScreen()),
+                      );
+                    },
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Color(0xFFC7EBF2)),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.black),
+                      side: MaterialStateProperty.all<BorderSide>(
+                        BorderSide(color: Colors.black, width: 2),
+                      ),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(screenHeight * 0.04),
+                        ),
+                      ),
+                    ),
+                    icon: Image.asset(
+                      path.join('lib', 'assets', 'imagens', 'divisao.png'),
+                      width: screenHeight * 0.235,
+                      height: screenWidth * 0.1,
+                    ),
+                    label: Text(
+                      '',
+                      style: TextStyle(
+                        color: Color(0xFFFB6D993),
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'craft',
+                        fontSize: screenHeight * 0.01,
+                        decoration: TextDecoration.overline,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
