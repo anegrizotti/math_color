@@ -23,6 +23,16 @@ class SelectSubjectScreen extends StatelessWidget {
           iconSize: 30, // Ajustar o tamanho do ícone
           color: Color(0xFFFB6D993),
         ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.close),
+            onPressed: () {
+              // Lógica para fechar o aplicativo ou executar a ação desejada
+            },
+            iconSize: 30, // Ajustar o tamanho do ícone
+            color: Color(0xFFFF0000),
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -154,8 +164,7 @@ class SelectSubjectScreen extends StatelessWidget {
                       ),
                     ),
                     icon: Image.asset(
-                      path.join(
-                          'lib', 'assets', 'imagens', 'adicao.png'),
+                      path.join('lib', 'assets', 'imagens', 'adicao.png'),
                       width: screenHeight * 0.235,
                       height: screenWidth * 0.1,
                     ),
@@ -334,8 +343,7 @@ class SelectSubjectScreen extends StatelessWidget {
                       ),
                     ),
                     icon: Image.asset(
-                      path.join(
-                          'lib', 'assets', 'imagens', 'multiplicacao.png'),
+                      path.join('lib', 'assets', 'imagens', 'tempo.png'),
                       width: screenHeight * 0.235,
                       height: screenWidth * 0.1,
                     ),
@@ -375,7 +383,7 @@ class SelectSubjectScreen extends StatelessWidget {
                       ),
                     ),
                     icon: Image.asset(
-                      path.join('lib', 'assets', 'imagens', 'divisao.png'),
+                      path.join('lib', 'assets', 'imagens', 'dinheiro.png'),
                       width: screenHeight * 0.235,
                       height: screenWidth * 0.1,
                     ),

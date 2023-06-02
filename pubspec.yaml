@@ -59,6 +59,8 @@ flutter:
     - lib/assets/imagens/subtracao.png
     - lib/assets/imagens/multiplicacao.png
     - lib/assets/imagens/divisao.png
+    - lib/assets/imagens/tempo.png
+    - lib/assets/imagens/dinheiro.png
   fonts:
   - family: bungee
     fonts:
