@@ -61,6 +61,7 @@ flutter:
     - lib/assets/imagens/divisao.png
     - lib/assets/imagens/tempo.png
     - lib/assets/imagens/dinheiro.png
+    - lib/assets/imagens/award.png
   fonts:
   - family: bungee
     fonts:

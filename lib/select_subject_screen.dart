@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path/path.dart' as path;
 
+import 'award_screen.dart';
+
 class SelectSubjectScreen extends StatelessWidget {
   const SelectSubjectScreen({Key? key}) : super(key: key);
 
@@ -21,16 +23,16 @@ class SelectSubjectScreen extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pop(); // Voltar para a tela anterior
           },
-          iconSize: 30, // Ajustar o tamanho do ícone
+          iconSize: screenWidth * 0.05, 
           color: Color(0xFFFB6D993),
         ),
         actions: [
           IconButton(
             icon: Icon(Icons.close),
             onPressed: () {
-              SystemNavigator.pop();// fechar o aplicativo
+              SystemNavigator.pop(); // fechar o aplicativo
             },
-            iconSize: 30, // Ajustar o tamanho do ícone
+            iconSize: screenWidth * 0.05,
             color: Color(0xFFFF0000),
           ),
         ],
@@ -41,44 +43,71 @@ class SelectSubjectScreen extends StatelessWidget {
             height: screenHeight * 0.15,
             width: MediaQuery.of(context).size.width,
             color: Color(0xFFFFF197),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'MATH',
-                    style: TextStyle(
-                      color: Color(0xFFEBA1CE),
-                      fontSize: screenHeight * 0.05,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'bungee',
-                      shadows: [
-                        Shadow(
-                          offset: Offset(2.0, 2.0),
-                          blurRadius: 5.0,
-                          color: Color(0xFF00FFFF),
+            child: Stack(
+              children: [
+                Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'MATH',
+                        style: TextStyle(
+                          color: Color(0xFFEBA1CE),
+                          fontSize: screenHeight * 0.05,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'bungee',
+                          shadows: [
+                            Shadow(
+                              offset: Offset(2.0, 2.0),
+                              blurRadius: 5.0,
+                              color: Color(0xFF00FFFF),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
+                      Text(
+                        'COLOR',
+                        style: TextStyle(
+                          color: Color(0xFFEBA1CE),
+                          fontSize: screenHeight * 0.05,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'bungee',
+                          shadows: [
+                            Shadow(
+                              offset: Offset(2.0, 2.0),
+                              blurRadius: 5.0,
+                              color: Color(0xFF00FFFF),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  bottom: screenHeight * 0.01,
+                  right: screenWidth * 0.0005,
+                  child: Ink(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AwardScreen()),
+                        );
+                      },
+                      child: Image.asset(
+                        path.join('lib', 'assets', 'imagens', 'award.png'),
+                        width: screenHeight * 0.05,
+                        height: screenWidth * 0.1,
+                      ),
                     ),
                   ),
-                  Text(
-                    'COLOR',
-                    style: TextStyle(
-                      color: Color(0xFFEBA1CE),
-                      fontSize: screenHeight * 0.05,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'bungee',
-                      shadows: [
-                        Shadow(
-                          offset: Offset(2.0, 2.0),
-                          blurRadius: 5.0,
-                          color: Color(0xFF00FFFF),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           Container(
@@ -120,8 +149,8 @@ class SelectSubjectScreen extends StatelessWidget {
               ),
               icon: Image.asset(
                 path.join('lib', 'assets', 'imagens', 'Contagem.png'),
-                width: screenHeight * 0.5, // Largura desejada da imagem
-                height: screenWidth * 0.1, // Altura desejada da imagem
+                width: screenHeight * 0.5,
+                height: screenWidth * 0.1,
               ),
               label: Text(
                 '',
