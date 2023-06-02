@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:path/path.dart' as path;
 
 class SelectSubjectScreen extends StatelessWidget {
@@ -27,7 +28,7 @@ class SelectSubjectScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.close),
             onPressed: () {
-              // Lógica para fechar o aplicativo ou executar a ação desejada
+              SystemNavigator.pop();// fechar o aplicativo
             },
             iconSize: 30, // Ajustar o tamanho do ícone
             color: Color(0xFFFF0000),
