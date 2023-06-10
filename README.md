@@ -17,6 +17,10 @@
 <ul>
   <li>Ane Luisy Grizotti - ane.lg@aluno.ifsc.edu.br</li>
   <li>Rafaela Santos da Rosa - rafaela.r19@aluno.ifsc.edu.br</li>
+</ul>
+
+<h2>Orientadores</h2>
+<ul>
   <li>Prof. Robson Costa - robson.costa@ifsc.edu.br</li>
   <li>Prof. Vilma Gisele Karsburg - vilma.karsburg@ifsc.edu.br</li>
 </ul>
