@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:math_color/select_subject_screen.dart';
+import 'package:math_color/pages/select_subject_screen.dart';
 import 'package:path/path.dart' as path;
 
 void main() {
