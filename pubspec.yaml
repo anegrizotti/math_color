@@ -36,6 +36,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  flutter_colorpicker: ^1.0.3
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +64,8 @@ flutter:
     - lib/assets/imagens/tempo.png
     - lib/assets/imagens/dinheiro.png
     - lib/assets/imagens/award.png
+    - lib/assets/imagens/outline_image.png
+    - lib/assets/imagens/colored_image.png
   fonts:
   - family: bungee
     fonts:

@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:path/path.dart' as path;
 
 import 'award_screen.dart';
+import 'color_screen.dart';
 
 class SelectSubjectScreen extends StatelessWidget {
   const SelectSubjectScreen({Key? key}) : super(key: key);
@@ -131,7 +132,7 @@ class SelectSubjectScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => SelectSubjectScreen()),
+                      builder: (context) => ColorizeImageScreen()),
                 );
               },
               style: ButtonStyle(
