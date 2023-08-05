@@ -37,6 +37,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_colorpicker: ^1.0.3
+  floodfill_image: ^0.0.8
+  flutter_icons: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +68,7 @@ flutter:
     - lib/assets/imagens/award.png
     - lib/assets/imagens/outline_image.png
     - lib/assets/imagens/colored_image.png
+    - lib/assets/imagens/coruja.png
   fonts:
   - family: bungee
     fonts:

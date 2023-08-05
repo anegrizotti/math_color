@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:math_color/pages/quiz_screen.dart';
 import 'package:path/path.dart' as path;
 
 import 'award_screen.dart';
@@ -132,7 +133,7 @@ class SelectSubjectScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => ColorizeImageScreen()),
+                      builder: (context) => MathQuizScreen()),
                 );
               },
               style: ButtonStyle(
