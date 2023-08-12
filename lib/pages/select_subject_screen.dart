@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:math_color/pages/levels_screen.dart';
 import 'package:math_color/pages/quiz_screen.dart';
 import 'package:path/path.dart' as path;
 
-import 'award_screen.dart';
 import 'color_screen.dart';
 
 class SelectSubjectScreen extends StatelessWidget {
@@ -84,29 +84,6 @@ class SelectSubjectScreen extends StatelessWidget {
                         ),
                       ),
                     ],
-                  ),
-                ),
-                Positioned(
-                  bottom: screenHeight * 0.01,
-                  right: screenWidth * 0.0005,
-                  child: Ink(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                    ),
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AwardScreen()),
-                        );
-                      },
-                      child: Image.asset(
-                        path.join('lib', 'assets', 'imagens', 'award.png'),
-                        width: screenHeight * 0.05,
-                        height: screenWidth * 0.1,
-                      ),
-                    ),
                   ),
                 ),
               ],
@@ -217,7 +194,7 @@ class SelectSubjectScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => SelectSubjectScreen()),
+                            builder: (context) => LevelsScreen()),
                       );
                     },
                     style: ButtonStyle(
