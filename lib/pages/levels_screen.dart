@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:math_color/pages/color_screen.dart';
+import 'package:math_color/pages/quiz_screen.dart';
 
 import '../repositories/levels_repository.dart';
 
@@ -73,8 +75,12 @@ class LevelsScreen extends StatelessWidget {
           ),
           SizedBox(height: 30), // Espaço entre a seção e os botões (aumentado em 50%)
           ElevatedButton(
-            onPressed: currentLevel >= 1 ? () {
-              // Lógica do botão 1
+            onPressed: currentLevel == 1 ? () {
+              Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MathQuizScreen()),
+                      );
             } : null,
             style: ElevatedButton.styleFrom(
               primary: Color(0xFFE4C0A8), // Cor do botão
@@ -97,9 +103,13 @@ class LevelsScreen extends StatelessWidget {
           ),
           SizedBox(height: screenHeight * 0.035), // Espaço entre os botões (aumentado em 50%)
           ElevatedButton(
-            onPressed: () {
-              // Lógica do botão 2
-            },
+            onPressed: currentLevel == 2 ? () {
+              Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MathQuizScreen()),
+                      );
+            } : null,
             style: ElevatedButton.styleFrom(
               primary: Color(0xFFE4C0A8), // Cor do botão
               onPrimary: Colors.black,
@@ -121,9 +131,13 @@ class LevelsScreen extends StatelessWidget {
           ),
           SizedBox(height: screenHeight * 0.035), // Espaço entre os botões (aumentado em 50%)
           ElevatedButton(
-            onPressed: () {
-              // Lógica do botão 3
-            },
+            onPressed: currentLevel == 3 ? () {
+              Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MathQuizScreen()),
+                      );
+            } : null,
             style: ElevatedButton.styleFrom(
               primary: Color(0xFFE4C0A8), // Cor do botão
               onPrimary: Colors.black,
@@ -145,9 +159,13 @@ class LevelsScreen extends StatelessWidget {
           ),
           SizedBox(height: screenHeight * 0.035), // Espaço entre os botões (aumentado em 50%)
           ElevatedButton(
-            onPressed: () {
-              // Lógica do botão 4
-            },
+            onPressed: currentLevel == 4 ? () {
+              Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MathQuizScreen()),
+                      );
+            } : null,
             style: ElevatedButton.styleFrom(
               primary: Color(0xFFE4C0A8), // Cor do botão
               onPrimary: Colors.black,
@@ -169,9 +187,13 @@ class LevelsScreen extends StatelessWidget {
           ),
           SizedBox(height: screenHeight * 0.035), // Espaço entre os botões (aumentado em 50%)
           ElevatedButton(
-            onPressed: () {
-              // Lógica do botão 5
-            },
+            onPressed: currentLevel == 5 ? () {
+              Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MathQuizScreen()),
+                      );
+            } : null,
             style: ElevatedButton.styleFrom(
               primary: Color(0xFFE4C0A8), // Cor do botão
               onPrimary: Colors.black,
@@ -193,9 +215,13 @@ class LevelsScreen extends StatelessWidget {
           ),
           SizedBox(height: screenHeight * 0.09), // Espaço entre os botões e o botão "CONCLUIR"
           ElevatedButton(
-            onPressed: () {
-              // Lógica a ser executada ao pressionar o botão "CONCLUIR"
-            },
+            onPressed: currentLevel == 6 ? () {
+              Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ColorizeImageScreen()),
+                      );
+            } : null,
             style: ElevatedButton.styleFrom(
               primary: Color(0xFFEBA1CE),
               onPrimary: Colors.black,

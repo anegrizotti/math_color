@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:math_color/pages/select_subject_screen.dart';
+import 'package:math_color/repositories/levels_repository.dart';
 import 'package:path/path.dart' as path;
 
 void main() {
   runApp(MyApp());
+    LevelsRepository levelsRepository = LevelsRepository();
+    levelsRepository.resetCurrentLevel();
 }
 
 class MyApp extends StatelessWidget {

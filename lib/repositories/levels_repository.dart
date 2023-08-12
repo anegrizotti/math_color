@@ -12,8 +12,12 @@ class LevelsRepository {
   int get currentLevel => _currentLevel;
 
   void completeLevel() {
-    if (_currentLevel < 5) {
+    if (_currentLevel < 6) {
       _currentLevel++;
     }
+  }
+
+  void resetCurrentLevel() {
+    _currentLevel = 1;
   }
 }

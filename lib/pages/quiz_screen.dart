@@ -59,7 +59,7 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
                       MaterialPageRoute(builder: (context) => LevelsScreen()),
                     );
                   },
-                  child: Text('Pintar'),
+                  child: Text('Próxima fase!'),
                 ),
               ],
             ),
