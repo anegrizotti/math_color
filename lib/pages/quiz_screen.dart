@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import '../repositories/levels_repository.dart';
 import 'color_screen.dart';
+import 'levels_screen.dart';
 
 class MathQuizScreen extends StatefulWidget {
   @override
@@ -41,6 +43,8 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
       context: context,
       builder: (BuildContext context) {
         if (correctAnswers == questions.length) {
+          LevelsRepository levelsRepository = LevelsRepository();
+          levelsRepository.completeLevel(); // Incrementa o nível no LevelRepository
           return AlertDialog(
             title: Text('Resultado do Quiz'),
             content: Column(
@@ -52,7 +56,7 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
                     Navigator.of(context).pop(); // Fechar o diálogo atual
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ColorizeImageScreen()),
+                      MaterialPageRoute(builder: (context) => LevelsScreen()),
                     );
                   },
                   child: Text('Pintar'),

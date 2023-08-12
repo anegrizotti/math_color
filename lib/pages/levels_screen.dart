@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../repositories/levels_repository.dart';
+
 class LevelsScreen extends StatelessWidget {
   const LevelsScreen({Key? key}) : super(key: key);
 
@@ -8,6 +10,8 @@ class LevelsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
+    LevelsRepository levelsRepository = LevelsRepository();
+    int currentLevel = levelsRepository.currentLevel;
 
     return Scaffold(
       backgroundColor: Color(0xFFB6D993),
@@ -69,9 +73,9 @@ class LevelsScreen extends StatelessWidget {
           ),
           SizedBox(height: 30), // Espaço entre a seção e os botões (aumentado em 50%)
           ElevatedButton(
-            onPressed: () {
+            onPressed: currentLevel >= 1 ? () {
               // Lógica do botão 1
-            },
+            } : null,
             style: ElevatedButton.styleFrom(
               primary: Color(0xFFE4C0A8), // Cor do botão
               onPrimary: Colors.black,
