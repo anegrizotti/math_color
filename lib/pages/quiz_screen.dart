@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:math_color/pages/select_subject_screen.dart';
+import 'levels_screen.dart';
 
 class MathQuizScreen extends StatelessWidget {
   const MathQuizScreen({Key? key});
@@ -10,7 +11,7 @@ class MathQuizScreen extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: Color(0xFFFD8DADA),
+      backgroundColor: Color(0xFFFFFFFFF),
       appBar: AppBar(
         backgroundColor: Color(0xFFFFF197),
         elevation: 0,
@@ -65,34 +66,155 @@ class MathQuizScreen extends StatelessWidget {
               ],
             ),
           ),
-          Spacer(), // Fill remaining space
+          SizedBox(height: 50),
           Container(
-            color: Color(0xFF0080FF), // Blue container background
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFF197),
+                        borderRadius: BorderRadius.circular(50),
+                        border: Border.all(
+                            color: Colors.black, width: 2),
+                      ),
+                      padding: EdgeInsets.all(35),
+                      child: Row(
+                        children: [
+                          Text(
+                            '2 + 5 ',
+                            style: TextStyle(fontSize: 50),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(35),
+                      child: Row(
+                        children: [
+                          Text(
+                            '= ',
+                            style: TextStyle(fontSize: 50),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xFFA0A0A0),
+                        borderRadius: BorderRadius.circular(50),
+                        border: Border.all(
+                            color: Colors.black, width: 2),
+                      ),
+                      padding: EdgeInsets.all(35),
+                      child: Row(
+                        children: [
+                          Text(
+                            '?',
+                            style: TextStyle(fontSize: 50),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: screenHeight * 0.335),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        // Correct answer logic
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFFEBA1CE),
+                        onPrimary: Colors.black,
+                        shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(screenHeight * 0.04),
+                          side: BorderSide(color: Colors.black, width: 2),
+                        ),
+                        minimumSize:
+                            Size(screenWidth * 0.3, screenHeight * 0.08),
+                      ),
+                      child: Text(
+                        '9',
+                        style: TextStyle(fontSize: screenHeight * 0.05),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Incorrect answer logic
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFFEBA1CE),
+                        onPrimary: Colors.black,
+                        shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(screenHeight * 0.04),
+                          side: BorderSide(color: Colors.black, width: 2),
+                        ),
+                        minimumSize:
+                            Size(screenWidth * 0.3, screenHeight * 0.08),
+                      ),
+                      child: Text(
+                        '7',
+                        style: TextStyle(fontSize: screenHeight * 0.05),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Incorrect answer logic
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFFEBA1CE),
+                        onPrimary: Colors.black,
+                        shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(screenHeight * 0.04),
+                          side: BorderSide(color: Colors.black, width: 2),
+                        ),
+                        minimumSize:
+                            Size(screenWidth * 0.3, screenHeight * 0.08),
+                      ),
+                      child: Text(
+                        '10',
+                        style: TextStyle(fontSize: screenHeight * 0.05),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: screenHeight * 0.09),
+              ],
+            ),
+          ),
+          Spacer(),
+          Container(
             width: screenWidth,
+            color: Color(0xFFFC7EBF2),
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => SelectSubjectScreen(),
-                  ),
+                  MaterialPageRoute(builder: (context) => LevelsScreen()),
                 );
               },
               style: ElevatedButton.styleFrom(
-                primary: Colors.transparent,
+                primary: Color(0xFFEBA1CE),
                 onPrimary: Colors.black,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.zero, // No rounded corners
+                  borderRadius: BorderRadius.circular(screenHeight * 0.04),
                   side: BorderSide(color: Colors.black, width: 2),
                 ),
-                minimumSize: Size(
-                    screenWidth, screenHeight * 0.08), // Ajuste do tamanho do botão "PRÓXIMO"
+                minimumSize: Size(screenWidth, screenHeight * 0.08),
               ),
               child: Text(
                 'PRÓXIMO',
-                style: TextStyle(
-                    fontSize:
-                        screenHeight * 0.035), // Ajuste do tamanho da fonte
+                style: TextStyle(fontSize: screenHeight * 0.035),
               ),
             ),
           ),

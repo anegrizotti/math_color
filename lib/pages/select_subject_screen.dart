@@ -5,6 +5,7 @@ import 'package:math_color/pages/levels_screen.dart';
 import 'package:math_color/pages/quiz_screen.dart';
 import 'package:path/path.dart' as path;
 
+import '../repositories/subject_repository.dart';
 import 'color_screen.dart';
 
 class SelectSubjectScreen extends StatelessWidget {
@@ -14,6 +15,7 @@ class SelectSubjectScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
+    SubjectRepository subjectRepository = SubjectRepository();
 
     return Scaffold(
       backgroundColor: Color(0xFFFF1F5F4),
@@ -25,7 +27,7 @@ class SelectSubjectScreen extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pop(); // Voltar para a tela anterior
           },
-          iconSize: screenWidth * 0.05, 
+          iconSize: screenWidth * 0.05,
           color: Color(0xFFFB6D993),
         ),
         actions: [
@@ -107,10 +109,10 @@ class SelectSubjectScreen extends StatelessWidget {
             padding: EdgeInsets.only(bottom: screenHeight * 0.03),
             child: TextButton.icon(
               onPressed: () {
+                subjectRepository.updateSubject('contagem');
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => MathQuizScreen()),
+                  MaterialPageRoute(builder: (context) => MathQuizScreen()),
                 );
               },
               style: ButtonStyle(
@@ -151,6 +153,7 @@ class SelectSubjectScreen extends StatelessWidget {
                 children: [
                   TextButton.icon(
                     onPressed: () {
+                      subjectRepository.updateSubject('adicao');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -191,10 +194,10 @@ class SelectSubjectScreen extends StatelessWidget {
                   SizedBox(width: 10),
                   TextButton.icon(
                     onPressed: () {
+                      subjectRepository.updateSubject('subtracao');
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => LevelsScreen()),
+                        MaterialPageRoute(builder: (context) => LevelsScreen()),
                       );
                     },
                     style: ButtonStyle(
@@ -240,6 +243,7 @@ class SelectSubjectScreen extends StatelessWidget {
                 children: [
                   TextButton.icon(
                     onPressed: () {
+                      subjectRepository.updateSubject('multiplicacao');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -281,6 +285,7 @@ class SelectSubjectScreen extends StatelessWidget {
                   SizedBox(width: 10),
                   TextButton.icon(
                     onPressed: () {
+                      subjectRepository.updateSubject('divisao');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -330,6 +335,7 @@ class SelectSubjectScreen extends StatelessWidget {
                 children: [
                   TextButton.icon(
                     onPressed: () {
+                      subjectRepository.updateSubject('tempo');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -370,6 +376,7 @@ class SelectSubjectScreen extends StatelessWidget {
                   SizedBox(width: 10),
                   TextButton.icon(
                     onPressed: () {
+                      subjectRepository.updateSubject('dinheiro');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
