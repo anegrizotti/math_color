@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:math_color/pages/select_subject_screen.dart';
+import '../models/questions/questions.dart';
+import '../repositories/levels_repository.dart';
+import '../repositories/subject_repository.dart';
 import 'levels_screen.dart';
 
 class MathQuizScreen extends StatelessWidget {
@@ -9,6 +12,29 @@ class MathQuizScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
+
+    SubjectRepository subjectRepository = SubjectRepository();
+    LevelsRepository levelsRepository = LevelsRepository();
+    
+    int currentLevel = levelsRepository.currentLevel;
+    String subject = subjectRepository.currentSubject;
+    List<Map<String, dynamic>>? questions;
+
+    if (subject == 'adicao') {
+      questions = additionQuestions;
+    } else if (subject == 'subtracao') {
+      questions = subtractionQuestions;
+    } else if (subject == 'multiplicacao') {
+      questions = multiplicationQuestions;
+    } else if (subject == 'divisao') {
+      questions = divisionQuestions;
+    } else if (subject == 'contagem') {
+      questions = countingQuestions;
+    } else if (subject == 'tempo') {
+      questions = timeQuestions;
+    } else if (subject == 'dinheiro') {
+      questions = moneyQuestions;
+    }
 
     return Scaffold(
       backgroundColor: Color(0xFFFFFFFFF),
@@ -85,7 +111,7 @@ class MathQuizScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           Text(
-                            '2 + 5 ',
+                            '${questions?[currentLevel - 1]["question"] ?? "No question"}',
                             style: TextStyle(fontSize: 50),
                           ),
                         ],
@@ -96,7 +122,7 @@ class MathQuizScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           Text(
-                            '= ',
+                            '=',
                             style: TextStyle(fontSize: 50),
                           ),
                         ],
@@ -141,7 +167,7 @@ class MathQuizScreen extends StatelessWidget {
                             Size(screenWidth * 0.3, screenHeight * 0.08),
                       ),
                       child: Text(
-                        '9',
+                        '${questions?[currentLevel - 1]["options"][0] ?? "No option"}',
                         style: TextStyle(fontSize: screenHeight * 0.05),
                       ),
                     ),
@@ -161,7 +187,7 @@ class MathQuizScreen extends StatelessWidget {
                             Size(screenWidth * 0.3, screenHeight * 0.08),
                       ),
                       child: Text(
-                        '7',
+                        '${questions?[currentLevel - 1]["options"][1] ?? "No option"}',
                         style: TextStyle(fontSize: screenHeight * 0.05),
                       ),
                     ),
@@ -181,7 +207,7 @@ class MathQuizScreen extends StatelessWidget {
                             Size(screenWidth * 0.3, screenHeight * 0.08),
                       ),
                       child: Text(
-                        '10',
+                        '${questions?[currentLevel - 1]["options"][2] ?? "No option"}',
                         style: TextStyle(fontSize: screenHeight * 0.05),
                       ),
                     ),
