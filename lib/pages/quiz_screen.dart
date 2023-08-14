@@ -1,132 +1,102 @@
 import 'package:flutter/material.dart';
-import '../repositories/levels_repository.dart';
-import 'color_screen.dart';
-import 'levels_screen.dart';
+import 'package:math_color/pages/select_subject_screen.dart';
 
-class MathQuizScreen extends StatefulWidget {
-  @override
-  _MathQuizScreenState createState() => _MathQuizScreenState();
-}
-
-class _MathQuizScreenState extends State<MathQuizScreen> {
-  List<Map<String, dynamic>> questions = [
-    {
-      'question': 'Qual é a soma de 2 + 3?',
-      'options': ['4', '5', '6', '7'],
-      'correctAnswer': '5',
-    },
-    {
-      'question': 'Quanto é 8 dividido por 2?',
-      'options': ['2', '4', '6', '8'],
-      'correctAnswer': '4',
-    },
-    // Adicione mais questões aqui
-  ];
-
-  List<String> userAnswers = List.filled(10, '');
-
-  void selectAnswer(int questionIndex, String answer) {
-    setState(() {
-      userAnswers[questionIndex] = answer;
-    });
-  }
-
-  void submitQuiz() {
-    int correctAnswers = 0;
-    for (int i = 0; i < questions.length; i++) {
-      if (userAnswers[i] == questions[i]['correctAnswer']) {
-        correctAnswers++;
-      }
-    }
-
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        if (correctAnswers == questions.length) {
-          LevelsRepository levelsRepository = LevelsRepository();
-          levelsRepository.completeLevel(); // Incrementa o nível no LevelRepository
-          return AlertDialog(
-            title: Text('Resultado do Quiz'),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text('Você acertou todas as questões!'),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop(); // Fechar o diálogo atual
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => LevelsScreen()),
-                    );
-                  },
-                  child: Text('Próxima fase!'),
-                ),
-              ],
-            ),
-          );
-        } else {
-          return AlertDialog(
-            title: Text('Resultado do Quiz'),
-            content: Text('Revise suas respostas.'),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text('Fechar'),
-              ),
-            ],
-          );
-        }
-      },
-    );
-  }
+class MathQuizScreen extends StatelessWidget {
+  const MathQuizScreen({Key? key});
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
+      backgroundColor: Color(0xFFFD8DADA),
       appBar: AppBar(
-        title: Text('Math Quiz'),
+        backgroundColor: Color(0xFFFFF197),
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop(); // Voltar para a tela anterior
+          },
+          color: Color(0xFFFB6D993),
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.close),
+            onPressed: () {
+              Navigator.of(context).pop(); // Fechar a tela
+            },
+            color: Color(0xFFFF0000),
+          ),
+        ],
       ),
-      body: ListView.builder(
-        itemCount: questions.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Card(
-            elevation: 2,
-            margin: EdgeInsets.all(10),
-            child: Padding(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    questions[index]['question'],
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 10),
-                  Column(
-                    children: questions[index]['options'].map<Widget>((option) {
-                      return ListTile(
-                        title: Text(option),
-                        leading: Radio(
-                          value: option,
-                          groupValue: userAnswers[index],
-                          onChanged: (value) {
-                            selectAnswer(index, value.toString());
-                          },
+      body: Column(
+        children: [
+          Container(
+            height: screenHeight * 0.15,
+            width: MediaQuery.of(context).size.width,
+            color: Color(0xFFFFF197),
+            child: Stack(
+              children: [
+                Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'QUESTÃO',
+                        style: TextStyle(
+                          color: Color(0xFFEBA1CE),
+                          fontSize: screenHeight * 0.05,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'bungee',
+                          shadows: [
+                            Shadow(
+                              offset: Offset(2.0, 2.0),
+                              blurRadius: 5.0,
+                              color: Color(0xFF00FFFF),
+                            ),
+                          ],
                         ),
-                      );
-                    }).toList(),
+                      ),
+                    ],
                   ),
-                ],
+                ),
+              ],
+            ),
+          ),
+          Spacer(), // Fill remaining space
+          Container(
+            color: Color(0xFF0080FF), // Blue container background
+            width: screenWidth,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SelectSubjectScreen(),
+                  ),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                primary: Colors.transparent,
+                onPrimary: Colors.black,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.zero, // No rounded corners
+                  side: BorderSide(color: Colors.black, width: 2),
+                ),
+                minimumSize: Size(
+                    screenWidth, screenHeight * 0.08), // Ajuste do tamanho do botão "PRÓXIMO"
+              ),
+              child: Text(
+                'PRÓXIMO',
+                style: TextStyle(
+                    fontSize:
+                        screenHeight * 0.035), // Ajuste do tamanho da fonte
               ),
             ),
-          );
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: submitQuiz,
-        child: Icon(Icons.send),
+          ),
+        ],
       ),
     );
   }
