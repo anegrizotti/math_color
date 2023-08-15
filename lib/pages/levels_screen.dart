@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_color/pages/color_screen.dart';
-import 'package:math_color/pages/quiz_screen.dart';
+import 'package:math_color/pages/math_quiz_screen.dart';
 
 import '../repositories/levels_repository.dart';
 
@@ -23,7 +23,7 @@ class LevelsScreen extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.of(context).pop(); // Voltar para a tela anterior
+            Navigator.of(context).pop();
           },
           iconSize: screenWidth * 0.05, // Ajustar o tamanho do ícone
           color: Color(0xFFFB6D993),
@@ -32,7 +32,7 @@ class LevelsScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.close),
             onPressed: () {
-              SystemNavigator.pop(); // fechar o aplicativo
+              SystemNavigator.pop();
             },
             iconSize: screenWidth * 0.05, // Ajustar o tamanho do ícone
             color: Color(0xFFFF0000),
@@ -73,155 +73,162 @@ class LevelsScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 30), // Espaço entre a seção e os botões (aumentado em 50%)
+          SizedBox(height: 30),
           ElevatedButton(
-            onPressed: currentLevel == 1 ? () {
-              Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => MathQuizScreen()),
-                      );
-            } : null,
+            onPressed: currentLevel == 1
+                ? () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MathQuizScreen()),
+                    );
+                  }
+                : null,
             style: ElevatedButton.styleFrom(
-              primary: Color(0xFFE4C0A8), // Cor do botão
+              primary: Color(0xFFE4C0A8),
               onPrimary: Colors.black,
-              shape: CircleBorder(), // Formato redondo
+              shape: CircleBorder(),
               side: BorderSide(color: Colors.black, width: 2),
-              minimumSize: Size(screenWidth * 0.3, screenHeight * 0.08), // Ajuste do tamanho
+              minimumSize: Size(screenWidth * 0.3, screenHeight * 0.08),
             ),
             child: Padding(
-              padding: EdgeInsets.all(12.0), // Ajuste do espaçamento interno
+              padding: EdgeInsets.all(12.0),
               child: Text(
                 '1',
                 style: TextStyle(
-                  fontSize: 45, // Aumento do tamanho da fonte
-                  fontFamily: 'craft', // Aplicando a fonte "CraftGirls"
-                  fontWeight: FontWeight.bold, // Fonte em negrito
+                  fontSize: 45,
+                  fontFamily: 'craft',
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
           ),
-          SizedBox(height: screenHeight * 0.035), // Espaço entre os botões (aumentado em 50%)
+          SizedBox(height: screenHeight * 0.035),
           ElevatedButton(
-            onPressed: currentLevel == 2 ? () {
-              Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => MathQuizScreen()),
-                      );
-            } : null,
+            onPressed: currentLevel == 2
+                ? () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MathQuizScreen()),
+                    );
+                  }
+                : null,
             style: ElevatedButton.styleFrom(
-              primary: Color(0xFFE4C0A8), // Cor do botão
+              primary: Color(0xFFE4C0A8),
               onPrimary: Colors.black,
-              shape: CircleBorder(), // Formato redondo
+              shape: CircleBorder(),
               side: BorderSide(color: Colors.black, width: 2),
-              minimumSize: Size(screenWidth * 0.3, screenHeight * 0.08), // Ajuste do tamanho
+              minimumSize: Size(screenWidth * 0.3, screenHeight * 0.08),
             ),
             child: Padding(
-              padding: EdgeInsets.all(12.0), // Ajuste do espaçamento interno
+              padding: EdgeInsets.all(12.0),
               child: Text(
                 '2',
                 style: TextStyle(
-                  fontSize: 45, // Aumento do tamanho da fonte
-                  fontFamily: 'craft', // Aplicando a fonte "CraftGirls"
-                  fontWeight: FontWeight.bold, // Fonte em negrito
+                  fontSize: 45,
+                  fontFamily: 'craft',
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
           ),
-          SizedBox(height: screenHeight * 0.035), // Espaço entre os botões (aumentado em 50%)
+          SizedBox(height: screenHeight * 0.035),
           ElevatedButton(
-            onPressed: currentLevel == 3 ? () {
-              Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => MathQuizScreen()),
-                      );
-            } : null,
+            onPressed: currentLevel == 3
+                ? () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MathQuizScreen()),
+                    );
+                  }
+                : null,
             style: ElevatedButton.styleFrom(
-              primary: Color(0xFFE4C0A8), // Cor do botão
+              primary: Color(0xFFE4C0A8),
               onPrimary: Colors.black,
-              shape: CircleBorder(), // Formato redondo
+              shape: CircleBorder(),
               side: BorderSide(color: Colors.black, width: 2),
-              minimumSize: Size(screenWidth * 0.3, screenHeight * 0.08), // Ajuste do tamanho
+              minimumSize: Size(screenWidth * 0.3, screenHeight * 0.08),
             ),
             child: Padding(
-              padding: EdgeInsets.all(12.0), // Ajuste do espaçamento interno
+              padding: EdgeInsets.all(12.0),
               child: Text(
                 '3',
                 style: TextStyle(
-                  fontSize: 45, // Aumento do tamanho da fonte
-                  fontFamily: 'craft', // Aplicando a fonte "CraftGirls"
-                  fontWeight: FontWeight.bold, // Fonte em negrito
+                  fontSize: 45,
+                  fontFamily: 'craft',
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
           ),
-          SizedBox(height: screenHeight * 0.035), // Espaço entre os botões (aumentado em 50%)
+          SizedBox(height: screenHeight * 0.035),
           ElevatedButton(
-            onPressed: currentLevel == 4 ? () {
-              Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => MathQuizScreen()),
-                      );
-            } : null,
+            onPressed: currentLevel == 4
+                ? () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MathQuizScreen()),
+                    );
+                  }
+                : null,
             style: ElevatedButton.styleFrom(
-              primary: Color(0xFFE4C0A8), // Cor do botão
+              primary: Color(0xFFE4C0A8),
               onPrimary: Colors.black,
-              shape: CircleBorder(), // Formato redondo
+              shape: CircleBorder(),
               side: BorderSide(color: Colors.black, width: 2),
-              minimumSize: Size(screenWidth * 0.3, screenHeight * 0.08), // Ajuste do tamanho
+              minimumSize: Size(screenWidth * 0.3, screenHeight * 0.08),
             ),
             child: Padding(
-              padding: EdgeInsets.all(12.0), // Ajuste do espaçamento interno
+              padding: EdgeInsets.all(12.0),
               child: Text(
                 '4',
                 style: TextStyle(
-                  fontSize: 45, // Aumento do tamanho da fonte
-                  fontFamily: 'craft', // Aplicando a fonte "CraftGirls"
-                  fontWeight: FontWeight.bold, // Fonte em negrito
+                  fontSize: 45,
+                  fontFamily: 'craft',
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
           ),
-          SizedBox(height: screenHeight * 0.035), // Espaço entre os botões (aumentado em 50%)
+          SizedBox(height: screenHeight * 0.035),
           ElevatedButton(
-            onPressed: currentLevel == 5 ? () {
-              Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => MathQuizScreen()),
-                      );
-            } : null,
+            onPressed: currentLevel == 5
+                ? () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MathQuizScreen()),
+                    );
+                  }
+                : null,
             style: ElevatedButton.styleFrom(
-              primary: Color(0xFFE4C0A8), // Cor do botão
+              primary: Color(0xFFE4C0A8),
               onPrimary: Colors.black,
-              shape: CircleBorder(), // Formato redondo
+              shape: CircleBorder(),
               side: BorderSide(color: Colors.black, width: 2),
-              minimumSize: Size(screenWidth * 0.3, screenHeight * 0.08), // Ajuste do tamanho
+              minimumSize: Size(screenWidth * 0.3, screenHeight * 0.08),
             ),
             child: Padding(
-              padding: EdgeInsets.all(12.0), // Ajuste do espaçamento interno
+              padding: EdgeInsets.all(12.0),
               child: Text(
                 '5',
                 style: TextStyle(
-                  fontSize: 45, // Aumento do tamanho da fonte
-                  fontFamily: 'craft', // Aplicando a fonte "CraftGirls"
-                  fontWeight: FontWeight.bold, // Fonte em negrito
+                  fontSize: 45,
+                  fontFamily: 'craft',
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
           ),
-          SizedBox(height: screenHeight * 0.09), // Espaço entre os botões e o botão "CONCLUIR"
+          SizedBox(height: screenHeight * 0.09),
           ElevatedButton(
-            onPressed: currentLevel == 6 ? () {
-              Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ColorizeImageScreen()),
-                      );
-            } : null,
+            onPressed: currentLevel == 6
+                ? () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ColorizeImageScreen()),
+                    );
+                  }
+                : null,
             style: ElevatedButton.styleFrom(
               primary: Color(0xFFEBA1CE),
               onPrimary: Colors.black,
@@ -229,11 +236,11 @@ class LevelsScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(screenHeight * 0.04),
                 side: BorderSide(color: Colors.black, width: 2),
               ),
-              minimumSize: Size(screenWidth * 0.6, screenHeight * 0.08), // Ajuste do tamanho do botão "CONCLUIR"
+              minimumSize: Size(screenWidth * 0.6, screenHeight * 0.08),
             ),
             child: Text(
               'CONCLUIR',
-              style: TextStyle(fontSize: screenHeight * 0.035), // Ajuste do tamanho da fonte
+              style: TextStyle(fontSize: screenHeight * 0.035),
             ),
           ),
         ],

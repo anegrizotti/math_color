@@ -5,8 +5,21 @@ import '../repositories/levels_repository.dart';
 import '../repositories/subject_repository.dart';
 import 'levels_screen.dart';
 
-class MathQuizScreen extends StatelessWidget {
-  const MathQuizScreen({Key? key});
+class MathQuizScreen extends StatefulWidget {
+  @override
+  _MathQuizScreenState createState() => _MathQuizScreenState();
+}
+
+class _MathQuizScreenState extends State<MathQuizScreen> {
+  Color questionColor = Color(0xFFA0A0A0); 
+  String questionText = "?";
+
+  void updateColorQuestionMark(String optionText, Color optionColor) {
+    setState(() {
+      questionText = optionText;
+      questionColor = optionColor;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +28,7 @@ class MathQuizScreen extends StatelessWidget {
 
     SubjectRepository subjectRepository = SubjectRepository();
     LevelsRepository levelsRepository = LevelsRepository();
-    
+
     int currentLevel = levelsRepository.currentLevel;
     String subject = subjectRepository.currentSubject;
     List<Map<String, dynamic>>? questions;
@@ -44,7 +57,7 @@ class MathQuizScreen extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.of(context).pop(); // Voltar para a tela anterior
+            Navigator.of(context).pop();
           },
           color: Color(0xFFFB6D993),
         ),
@@ -52,7 +65,7 @@ class MathQuizScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.close),
             onPressed: () {
-              Navigator.of(context).pop(); // Fechar a tela
+              Navigator.of(context).pop();
             },
             color: Color(0xFFFF0000),
           ),
@@ -104,8 +117,7 @@ class MathQuizScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Color(0xFFFFF197),
                         borderRadius: BorderRadius.circular(50),
-                        border: Border.all(
-                            color: Colors.black, width: 2),
+                        border: Border.all(color: Colors.black, width: 2),
                       ),
                       padding: EdgeInsets.all(35),
                       child: Row(
@@ -130,16 +142,15 @@ class MathQuizScreen extends StatelessWidget {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        color: Color(0xFFA0A0A0),
+                        color: questionColor, // Altera a cor aqui
                         borderRadius: BorderRadius.circular(50),
-                        border: Border.all(
-                            color: Colors.black, width: 2),
+                        border: Border.all(color: Colors.black, width: 2),
                       ),
                       padding: EdgeInsets.all(35),
                       child: Row(
                         children: [
                           Text(
-                            '?',
+                            questionText,
                             style: TextStyle(fontSize: 50),
                           ),
                         ],
@@ -153,10 +164,13 @@ class MathQuizScreen extends StatelessWidget {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        // Correct answer logic
+                        updateColorQuestionMark(
+                          '${questions?[currentLevel - 1]["options"][0] ?? "No option"}',
+                          Color(0xFFC7EBF2),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Color(0xFFEBA1CE),
+                        primary: Color(0xFFB6D993),
                         onPrimary: Colors.black,
                         shape: RoundedRectangleBorder(
                           borderRadius:
@@ -173,10 +187,14 @@ class MathQuizScreen extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        // Incorrect answer logic
+                        updateColorQuestionMark(
+                          '${questions?[currentLevel - 1]["options"][1] ?? "No option"}',
+                          Color(0xFFC7EBF2),
+                        );
+                        // answer logic
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Color(0xFFEBA1CE),
+                        primary: Color(0xFFB6D993),
                         onPrimary: Colors.black,
                         shape: RoundedRectangleBorder(
                           borderRadius:
@@ -193,10 +211,14 @@ class MathQuizScreen extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        // Incorrect answer logic
+                        updateColorQuestionMark(
+                          '${questions?[currentLevel - 1]["options"][2] ?? "No option"}',
+                          Color(0xFFC7EBF2),
+                        );
+                        // answer logic
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Color(0xFFEBA1CE),
+                        primary: Color(0xFFB6D993),
                         onPrimary: Colors.black,
                         shape: RoundedRectangleBorder(
                           borderRadius:

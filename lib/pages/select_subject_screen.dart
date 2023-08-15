@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_color/pages/levels_screen.dart';
-import 'package:math_color/pages/quiz_screen.dart';
+import 'package:math_color/pages/math_quiz_screen.dart';
 import 'package:path/path.dart' as path;
 
 import '../repositories/subject_repository.dart';
@@ -25,7 +25,7 @@ class SelectSubjectScreen extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.of(context).pop(); // Voltar para a tela anterior
+            Navigator.of(context).pop();
           },
           iconSize: screenWidth * 0.05,
           color: Color(0xFFFB6D993),
@@ -34,7 +34,7 @@ class SelectSubjectScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.close),
             onPressed: () {
-              SystemNavigator.pop(); // fechar o aplicativo
+              SystemNavigator.pop();
             },
             iconSize: screenWidth * 0.05,
             color: Color(0xFFFF0000),
