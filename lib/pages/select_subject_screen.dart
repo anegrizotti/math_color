@@ -112,7 +112,7 @@ class SelectSubjectScreen extends StatelessWidget {
                 subjectRepository.updateSubject('contagem');
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MathQuizScreen()),
+                  MaterialPageRoute(builder: (context) => LevelsScreen()),
                 );
               },
               style: ButtonStyle(
@@ -157,7 +157,7 @@ class SelectSubjectScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => SelectSubjectScreen()),
+                            builder: (context) => LevelsScreen()),
                       );
                     },
                     style: ButtonStyle(
@@ -247,7 +247,7 @@ class SelectSubjectScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => SelectSubjectScreen()),
+                            builder: (context) => LevelsScreen()),
                       );
                     },
                     style: ButtonStyle(
@@ -289,7 +289,7 @@ class SelectSubjectScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => SelectSubjectScreen()),
+                            builder: (context) => LevelsScreen()),
                       );
                     },
                     style: ButtonStyle(
@@ -339,7 +339,7 @@ class SelectSubjectScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => SelectSubjectScreen()),
+                            builder: (context) => LevelsScreen()),
                       );
                     },
                     style: ButtonStyle(
@@ -380,7 +380,7 @@ class SelectSubjectScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => SelectSubjectScreen()),
+                            builder: (context) => LevelsScreen()),
                       );
                     },
                     style: ButtonStyle(

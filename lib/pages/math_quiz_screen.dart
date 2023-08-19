@@ -11,15 +11,9 @@ class MathQuizScreen extends StatefulWidget {
 }
 
 class _MathQuizScreenState extends State<MathQuizScreen> {
-  Color questionColor = Color(0xFFA0A0A0); 
+  Color questionColor = Color(0xFFA0A0A0);
   String questionText = "?";
-
-  void updateColorQuestionMark(String optionText, Color optionColor) {
-    setState(() {
-      questionText = optionText;
-      questionColor = optionColor;
-    });
-  }
+  bool isAnswerCorrect = false;
 
   @override
   Widget build(BuildContext context) {
@@ -49,23 +43,56 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
       questions = moneyQuestions;
     }
 
+    void updateColorQuestionMark(String optionText, Color optionColor) {
+      setState(() {
+        questionText = optionText;
+        questionColor = optionColor;
+
+        if (optionText == questions?[currentLevel - 1]["correctAnswer"]) {
+          isAnswerCorrect = true;
+        } else {
+          isAnswerCorrect = false;
+        }
+      });
+    }
+
     return Scaffold(
       backgroundColor: Color(0xFFFFFFFFF),
       appBar: AppBar(
         backgroundColor: Color(0xFFFFF197),
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          color: Color(0xFFFB6D993),
-        ),
         actions: [
           IconButton(
             icon: Icon(Icons.close),
             onPressed: () {
-              Navigator.of(context).pop();
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text("Deseja desistir?"),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context); // Fechar o diálogo
+                        },
+                        child: Text("Cancelar"),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          levelsRepository.resetCurrentLevel();
+                          subjectRepository.resetSubject();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SelectSubjectScreen()),
+                          );
+                        },
+                        child: Text("Desistir"),
+                      ),
+                    ],
+                  );
+                },
+              );
             },
             color: Color(0xFFFF0000),
           ),
@@ -246,10 +273,31 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
             child: ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LevelsScreen()),
-                );
+                if (isAnswerCorrect) {
+                  levelsRepository.completeLevel();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LevelsScreen()),
+                  );
+                } else {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text("Resposta Errada"),
+                        content: Text("Tente novamente!"),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text("OK"),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }
               },
               style: ElevatedButton.styleFrom(
                 primary: Color(0xFFEBA1CE),

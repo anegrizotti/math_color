@@ -79,7 +79,7 @@ const List<Map<String, dynamic>> multiplicationQuestions = [
   {
     "question": "Rafaela tinha 5 prateleiras com 12 livros em cada. Quantos livros Rafaela tinha?",
     "correctAnswer": "60",
-    "options": ["45", "50" "60"],
+    "options": ["45", "50", "60"],
   },
 ];
 

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:floodfill_image/floodfill_image.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:math_color/pages/select_subject_screen.dart';
+import 'package:math_color/repositories/levels_repository.dart';
+
+import '../repositories/subject_repository.dart';
 
 class ColorizeImageScreen extends StatefulWidget {
   @override
@@ -47,22 +50,23 @@ class _ColorizeImageScreenState extends State<ColorizeImageScreen> {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
 
+    SubjectRepository subjectRepository = SubjectRepository();
+    LevelsRepository levelsRepository = LevelsRepository();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFFFFF197),
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pop(); // Voltar para a tela anterior
-          },
-          color: Color(0xFFFB6D993),
-        ),
         actions: [
           IconButton(
             icon: Icon(Icons.close),
             onPressed: () {
-              Navigator.of(context).pop(); // Fechar a tela
+              levelsRepository.resetCurrentLevel();
+              subjectRepository.resetSubject();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SelectSubjectScreen()),
+              );
             },
             color: Color(0xFFFF0000),
           ),
@@ -140,6 +144,8 @@ class _ColorizeImageScreenState extends State<ColorizeImageScreen> {
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
             child: ElevatedButton(
               onPressed: () {
+                levelsRepository.resetCurrentLevel();
+                subjectRepository.resetSubject();
                 Navigator.push(
                   context,
                   MaterialPageRoute(

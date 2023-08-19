@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_color/pages/color_screen.dart';
 import 'package:math_color/pages/math_quiz_screen.dart';
+import 'package:math_color/pages/select_subject_screen.dart';
+import 'package:math_color/repositories/subject_repository.dart';
 
 import '../repositories/levels_repository.dart';
 
@@ -13,6 +15,7 @@ class LevelsScreen extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     LevelsRepository levelsRepository = LevelsRepository();
+    SubjectRepository subjectRepository = SubjectRepository();
     int currentLevel = levelsRepository.currentLevel;
 
     return Scaffold(
@@ -20,19 +23,38 @@ class LevelsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Color(0xFFFFF197),
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          iconSize: screenWidth * 0.05, // Ajustar o tamanho do ícone
-          color: Color(0xFFFB6D993),
-        ),
         actions: [
           IconButton(
             icon: Icon(Icons.close),
             onPressed: () {
-              SystemNavigator.pop();
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text("Deseja desistir?"),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context); // Fechar o diálogo
+                        },
+                        child: Text("Cancelar"),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          levelsRepository.resetCurrentLevel();
+                          subjectRepository.resetSubject();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SelectSubjectScreen()),
+                          );
+                        },
+                        child: Text("Desistir"),
+                      ),
+                    ],
+                  );
+                },
+              );
             },
             iconSize: screenWidth * 0.05, // Ajustar o tamanho do ícone
             color: Color(0xFFFF0000),
