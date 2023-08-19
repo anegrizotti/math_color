@@ -4,6 +4,7 @@ import '../models/questions/questions.dart';
 import '../repositories/levels_repository.dart';
 import '../repositories/subject_repository.dart';
 import 'levels_screen.dart';
+import 'package:path/path.dart' as path;
 
 class MathQuizScreen extends StatefulWidget {
   @override
@@ -19,6 +20,7 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
+    Widget sizedBox;
 
     SubjectRepository subjectRepository = SubjectRepository();
     LevelsRepository levelsRepository = LevelsRepository();
@@ -41,6 +43,12 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
       questions = timeQuestions;
     } else if (subject == 'dinheiro') {
       questions = moneyQuestions;
+    }
+
+    if (questions?[currentLevel - 1]["imageUrl"] != null) {
+      sizedBox = SizedBox(height: screenHeight * 0.01);
+    } else {
+      sizedBox = SizedBox(height: screenHeight * 0.335);
     }
 
     void updateColorQuestionMark(String optionText, Color optionColor) {
@@ -185,7 +193,27 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
                     ),
                   ],
                 ),
-                SizedBox(height: screenHeight * 0.335),
+                if (questions?[currentLevel - 1]["imageUrl"] != null)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        child: Image.asset(
+                          path.join(
+                              'lib',
+                              'assets',
+                              'imagens',
+                              'imageQuestions',
+                              questions?[currentLevel - 1]["imageUrl"]),
+                          width: screenWidth * 0.7,
+                          height: screenHeight * 0.3,
+                          fit: BoxFit.contain, // Alterado para BoxFit.contain
+                        ),
+                      ),
+                    ],
+                  ),
+                sizedBox,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [

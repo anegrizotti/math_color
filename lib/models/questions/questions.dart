@@ -113,7 +113,7 @@ const List<Map<String, dynamic>> divisionQuestions = [
 
 const List<Map<String, dynamic>> countingQuestions = [
   {
-    "question": "Complete a sequencia: 49, 50,  , , 53:",
+    "question": "Complete a sequência: 49, 50,  , , 53:",
     "correctAnswer": "51, 52",
     "options": ["48, 49", "51, 52", "52, 53"],
   },
@@ -180,19 +180,19 @@ const List<Map<String, dynamic>> moneyQuestions = [
     "question": "Qual nota tem o maior valor?",
     "correctAnswer": "50 reais",
     "options": ["20 reais", "50 reais", "100 reais"],
-    "imageUrl": "caminho/para/imagem/moedas.png",
+    "imageUrl": "questaoDinheiro2.png",
   },
   {
     "question": "Qual moeda tem o menor valor?",
     "correctAnswer": "5 centavos",
     "options": ["5 centavos", "25 centavos", "50 centavos"],
-    "imageUrl": "caminho/para/imagem/moedas.png",
+    "imageUrl": "questaoDinheiro3.png",
   },
   {
     "question": "Quantos reais tem na imagem?",
     "correctAnswer": "3 reais e 75 centavos",
     "options": ["2 reais e 50 centavos", "3 reais e 75 centavos", "4 reais"],
-    "imageUrl": "caminho/para/imagem/dinheiro.png",
+    "imageUrl": "questaoDinheiro4.png",
   },
   {
     "question": "Ailton tem 5 moedas de 50 centavos. Quanto ele tem em dinheiro?",
