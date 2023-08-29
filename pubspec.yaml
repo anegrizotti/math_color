@@ -65,10 +65,25 @@ flutter:
     - lib/assets/imagens/divisao.png
     - lib/assets/imagens/tempo.png
     - lib/assets/imagens/dinheiro.png
-    - lib/assets/imagens/award.png
-    - lib/assets/imagens/outline_image.png
-    - lib/assets/imagens/colored_image.png
-    - lib/assets/imagens/coruja.png
+    - lib/assets/imagens/colorImages/astronauta.png
+    - lib/assets/imagens/colorImages/cachorro1.png
+    - lib/assets/imagens/colorImages/cachorro2.png
+    - lib/assets/imagens/colorImages/dinossauro1.png
+    - lib/assets/imagens/colorImages/dinossauro2.png
+    - lib/assets/imagens/colorImages/elefante.png
+    - lib/assets/imagens/colorImages/gato.png
+    - lib/assets/imagens/colorImages/girassol.png
+    - lib/assets/imagens/colorImages/mickey1.png
+    - lib/assets/imagens/colorImages/mickey2.png
+    - lib/assets/imagens/colorImages/minecraft.png
+    - lib/assets/imagens/colorImages/minion.png
+    - lib/assets/imagens/colorImages/patrulhaCanina1.png
+    - lib/assets/imagens/colorImages/patrulhaCanina2.png
+    - lib/assets/imagens/colorImages/relampagoMcQueen.png
+    - lib/assets/imagens/colorImages/sereia.png
+    - lib/assets/imagens/colorImages/solLua.png
+    - lib/assets/imagens/colorImages/sorvete.png
+    - lib/assets/imagens/colorImages/tartaruga.png
     - lib/assets/imagens/imageQuestions/questaoDinheiro2.png
     - lib/assets/imagens/imageQuestions/questaoDinheiro3.png
     - lib/assets/imagens/imageQuestions/questaoDinheiro4.png

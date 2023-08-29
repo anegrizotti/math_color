@@ -131,7 +131,7 @@ class _ColorizeImageScreenState extends State<ColorizeImageScreen> {
           Expanded(
             child: Center(
               child: FloodFillImage(
-                imageProvider: AssetImage('lib/assets/imagens/coruja.png'),
+                imageProvider: AssetImage('lib/assets/imagens/colorImages/sorvete.png'),
                 fillColor: _selectedColor,
                 avoidColor: [Colors.transparent, Colors.black],
                 width: MediaQuery.of(context).size.width.toInt(),
