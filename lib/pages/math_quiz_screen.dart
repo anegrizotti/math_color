@@ -148,20 +148,22 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Color(0xFFFFF197),
-                        borderRadius: BorderRadius.circular(50),
-                        border: Border.all(color: Colors.black, width: 2),
-                      ),
-                      padding: EdgeInsets.all(35),
-                      child: Row(
-                        children: [
-                          Text(
-                            '${questions?[currentLevel - 1]["question"] ?? "No question"}',
-                            style: TextStyle(fontSize: 50),
-                          ),
-                        ],
+                    Expanded(
+                      flex: 2,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Color(0xFFFFF197),
+                          borderRadius: BorderRadius.circular(50),
+                          border: Border.all(color: Colors.black, width: 2),
+                        ),
+                        padding: EdgeInsets.all(35),
+                        child: Text(
+                          '${questions?[currentLevel - 1]["question"] ?? "No question"}',
+                          style: TextStyle(fontSize: 50),
+                          overflow: TextOverflow.ellipsis,
+                          softWrap: true,
+                          maxLines: 5,
+                        ),
                       ),
                     ),
                     Container(
@@ -193,6 +195,7 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
                     ),
                   ],
                 ),
+                sizedBox,
                 if (questions?[currentLevel - 1]["imageUrl"] != null)
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -213,7 +216,6 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
                       ),
                     ],
                   ),
-                sizedBox,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -246,7 +248,6 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
                           '${questions?[currentLevel - 1]["options"][1] ?? "No option"}',
                           Color(0xFFC7EBF2),
                         );
-                        // answer logic
                       },
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xFFB6D993),
@@ -290,7 +291,6 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
                     ),
                   ],
                 ),
-                SizedBox(height: screenHeight * 0.09),
               ],
             ),
           ),

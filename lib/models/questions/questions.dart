@@ -113,7 +113,7 @@ const List<Map<String, dynamic>> divisionQuestions = [
 
 const List<Map<String, dynamic>> countingQuestions = [
   {
-    "question": "Complete a sequência: 49, 50,  , , 53:",
+    "question": "Complete a sequência: 49, 50,..,.., 53:",
     "correctAnswer": "51, 52",
     "options": ["48, 49", "51, 52", "52, 53"],
   },
@@ -173,30 +173,30 @@ const List<Map<String, dynamic>> timeQuestions = [
 const List<Map<String, dynamic>> moneyQuestions = [
   {
     "question": "Responda qual é a soma de 12 reais com 8 reais?",
-    "correctAnswer": "20 reais",
-    "options": ["15 reais", "20 reais", "25 reais"],
+    "correctAnswer": "R\$20,00",
+    "options": ["R\$15,00", "R\$20,00", "R\$25,00"],
   },
   {
     "question": "Qual nota tem o maior valor?",
-    "correctAnswer": "50 reais",
-    "options": ["20 reais", "50 reais", "100 reais"],
+    "correctAnswer": "R\$50",
+    "options": ["R\$20,00", "R\$50,00", "R\$100,00"],
     "imageUrl": "questaoDinheiro2.png",
   },
   {
     "question": "Qual moeda tem o menor valor?",
-    "correctAnswer": "5 centavos",
-    "options": ["5 centavos", "25 centavos", "50 centavos"],
+    "correctAnswer": "R\$0,05",
+    "options": ["R\$0,05", "R\$0,25", "R\$0,50"],
     "imageUrl": "questaoDinheiro3.png",
   },
   {
     "question": "Quantos reais tem na imagem?",
-    "correctAnswer": "3 reais e 75 centavos",
-    "options": ["2 reais e 50 centavos", "3 reais e 75 centavos", "4 reais"],
+    "correctAnswer": "R\$3,75",
+    "options": ["R\$2,50", "R\$3,75", "R\$4,00"],
     "imageUrl": "questaoDinheiro4.png",
   },
   {
     "question": "Ailton tem 5 moedas de 50 centavos. Quanto ele tem em dinheiro?",
-    "correctAnswer": "2,50",
-    "options": ["1,00", "2,00", "2,50"],
+    "correctAnswer": "R\$2,50",
+    "options": ["R\$1,00", "R\$2,00", "R\$2,50"],
   },
 ];
