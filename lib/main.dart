@@ -2,11 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:math_color/pages/select_subject_screen.dart';
 import 'package:math_color/repositories/levels_repository.dart';
 import 'package:path/path.dart' as path;
+import 'database/db.dart';
+import 'models/questions/questions.dart';
 
 void main() {
   runApp(MyApp());
     LevelsRepository levelsRepository = LevelsRepository();
     levelsRepository.resetCurrentLevel();
+
+    final dbHelper = DatabaseHelper();
+    dbHelper.initializeDatabase();
+
+    dbHelper.insertQuestions(additionQuestions, 'addition_questions');
+    dbHelper.insertQuestions(subtractionQuestions, 'subtraction_questions');
+    dbHelper.insertQuestions(multiplicationQuestions, 'multiplication_questions');
+    dbHelper.insertQuestions(divisionQuestions, 'division_questions');
+    dbHelper.insertQuestions(countingQuestions, 'counting_questions');
+    dbHelper.insertQuestions(timeQuestions, 'time_questions');
+    dbHelper.insertQuestions(moneyQuestions, 'money_questions');
+
+    print('Inseriu');
 }
 
 class MyApp extends StatelessWidget {
