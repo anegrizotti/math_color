@@ -1,86 +1,108 @@
-import 'package:sqflite/sqflite.dart';
-import 'package:sqflite/sqlite_api.dart';
+import 'dart:convert';
 import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 
-class DB {
-  // Construtor com acesso privado
-  DB._();
-  // Criar uma instancia de DB
-  static final DB instance = DB._();
-  //Instancia do SQLite
+class DatabaseHelper {
   static Database? _database;
 
-  get database async {
-    if (_database != null) return _database;
+  Future<Database> get database async {
+    if (_database != null) return _database!;
 
-    return await _initDatabase();
+    _database = await initializeDatabase();
+    return _database!;
   }
 
-  _initDatabase() async {
+  Future<Database> initializeDatabase() async {
+    final path = await getDatabasesPath();
+    final dbPath = join(path, 'questions.db');
+
     return await openDatabase(
-      join(await getDatabasesPath(), 'mathColor.db'),
+      dbPath,
       version: 1,
-      onCreate: _onCreate,
+      onCreate: (db, version) async {
+        await db.execute('''
+      CREATE TABLE addition_questions(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        question TEXT,
+        correctAnswer TEXT,
+        options TEXT
+      )
+    ''');
+
+        await db.execute('''
+      CREATE TABLE subtraction_questions(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        question TEXT,
+        correctAnswer TEXT,
+        options TEXT
+      )
+    ''');
+
+        await db.execute('''
+      CREATE TABLE multiplication_questions(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        question TEXT,
+        correctAnswer TEXT,
+        options TEXT
+      )
+    ''');
+
+        await db.execute('''
+      CREATE TABLE division_questions(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        question TEXT,
+        correctAnswer TEXT,
+        options TEXT
+      )
+    ''');
+
+        await db.execute('''
+      CREATE TABLE counting_questions(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        question TEXT,
+        correctAnswer TEXT,
+        options TEXT,
+        imageUrl TEXT
+      )
+    ''');
+
+        await db.execute('''
+      CREATE TABLE time_questions(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        question TEXT,
+        correctAnswer TEXT,
+        options TEXT,
+        imageUrl TEXT
+      )
+    ''');
+
+        await db.execute('''
+      CREATE TABLE money_questions(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        question TEXT,
+        correctAnswer TEXT,
+        options TEXT,
+        imageUrl TEXT
+      )
+    ''');
+      },
     );
   }
 
-  _onCreate(db, versao) async {
-    await db.execute(_adicao);
-    await db.execute(_subtracao);
-    await db.execute(_contagem);
-    await db.execute(_dinheiro);
-    await db.execute(_tempo);
-    await db.execute(_multiplicacao);
-    await db.execute(_divisao);
-   // await db.insert('conta', {'saldo': 0}); Perguntar para o Robson
+  Future<void> insertQuestions(
+      List<Map<String, dynamic>> questions, String tableName) async {
+    final db = await database;
+    final batch = db.batch();
+
+    for (var question in questions) {
+      final optionsJson = jsonEncode(question['options']);
+      batch.insert(tableName, {
+        'question': question['question'],
+        'correctAnswer': question['correctAnswer'],
+        'options': optionsJson,
+      });
+    }
+
+    await batch.commit(noResult: true);
   }
-
-  String get _adicao => '''
-    CREATE TABLE adicao (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      caminhoImagem TEXT
-    );
-  ''';
-
-  String get _subtracao => '''
-    CREATE TABLE subtracao (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      caminhoImagem TEXT
-    );
-  ''';
-
-  String get _contagem => '''
-    CREATE TABLE contagem (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      caminhoImagem TEXT
-    );
-  ''';
-
-  String get _dinheiro => '''
-    CREATE TABLE dinheiro (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      caminhoImagem TEXT
-    );
-  ''';
-
-  String get _tempo => '''
-    CREATE TABLE tempo (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      caminhoImagem TEXT
-    );
-  ''';
-
-  String get _multiplicacao => '''
-    CREATE TABLE multiplicacao (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      caminhoImagem TEXT
-    );
-  ''';
-
-  String get _divisao => '''
-    CREATE TABLE divisao (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      caminhoImagem TEXT
-    );
-  ''';
 }
