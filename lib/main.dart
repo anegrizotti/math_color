@@ -5,23 +5,22 @@ import 'package:path/path.dart' as path;
 import 'database/db.dart';
 import 'models/questions/questions.dart';
 
-void main() {
+void main() async {
   runApp(MyApp());
-    LevelsRepository levelsRepository = LevelsRepository();
-    levelsRepository.resetCurrentLevel();
+  LevelsRepository levelsRepository = LevelsRepository();
+  levelsRepository.resetCurrentLevel();
 
-    final dbHelper = DatabaseHelper();
-    dbHelper.initializeDatabase();
+  final dbHelper = DatabaseHelper();
+  await dbHelper.initializeDatabase();
 
-    dbHelper.insertQuestions(additionQuestions, 'addition_questions');
-    dbHelper.insertQuestions(subtractionQuestions, 'subtraction_questions');
-    dbHelper.insertQuestions(multiplicationQuestions, 'multiplication_questions');
-    dbHelper.insertQuestions(divisionQuestions, 'division_questions');
-    dbHelper.insertQuestions(countingQuestions, 'counting_questions');
-    dbHelper.insertQuestions(timeQuestions, 'time_questions');
-    dbHelper.insertQuestions(moneyQuestions, 'money_questions');
-
-    print('Inseriu');
+  await dbHelper.insertQuestions(additionQuestions, 'addition_questions');
+  await dbHelper.insertQuestions(subtractionQuestions, 'subtraction_questions');
+  await dbHelper.insertQuestions(
+      multiplicationQuestions, 'multiplication_questions');
+  await dbHelper.insertQuestions(divisionQuestions, 'division_questions');
+  await dbHelper.insertQuestions(countingQuestions, 'counting_questions');
+  await dbHelper.insertQuestions(timeQuestions, 'time_questions');
+  await dbHelper.insertQuestions(moneyQuestions, 'money_questions');
 }
 
 class MyApp extends StatelessWidget {
@@ -116,7 +115,7 @@ class MyApp extends StatelessWidget {
                     SizedBox(height: screenHeight * 0.03),
                     Expanded(
                       child: Image.asset(
-                        path.join('lib', 'assets', 'imagens','telainicial.png'),
+                        path.join('lib', 'assets', 'imagens', 'telainicial.png'),
                         fit: BoxFit.contain,
                         height: screenHeight * 0.3,
                       ),

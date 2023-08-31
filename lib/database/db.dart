@@ -105,4 +105,33 @@ class DatabaseHelper {
 
     await batch.commit(noResult: true);
   }
+
+  Future<List<Question>> getQuestions(String tableName) async {
+    final db = await database;
+    final List<Map<String, dynamic>> maps = await db.query(tableName);
+    final String teste;
+
+    return List.generate(maps.length, (i) {
+      return Question(
+        id: maps[i]['id'],
+        question: maps[i]['question'],
+        correctAnswer: maps[i]['correctAnswer'],
+        options: List<String>.from(jsonDecode(maps[i]['options'])),
+      );
+    });
+  }
+}
+
+class Question {
+  final int id;
+  final String question;
+  final String correctAnswer;
+  final List<String> options;
+
+  Question({
+    required this.id,
+    required this.question,
+    required this.correctAnswer,
+    required this.options,
+  });
 }
