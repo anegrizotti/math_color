@@ -11,12 +11,12 @@ void main() async {
   levelsRepository.resetCurrentLevel();
 
   final dbHelper = DatabaseHelper();
+  await dbHelper.resetDatabase(); // deve ser tirado depois. apenas para fins de testes
   await dbHelper.initializeDatabase();
 
   await dbHelper.insertQuestions(additionQuestions, 'addition_questions');
   await dbHelper.insertQuestions(subtractionQuestions, 'subtraction_questions');
-  await dbHelper.insertQuestions(
-      multiplicationQuestions, 'multiplication_questions');
+  await dbHelper.insertQuestions(multiplicationQuestions, 'multiplication_questions');
   await dbHelper.insertQuestions(divisionQuestions, 'division_questions');
   await dbHelper.insertQuestions(countingQuestions, 'counting_questions');
   await dbHelper.insertQuestions(timeQuestions, 'time_questions');

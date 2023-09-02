@@ -25,7 +25,8 @@ class DatabaseHelper {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         question TEXT,
         correctAnswer TEXT,
-        options TEXT
+        options TEXT,
+        imageUrl TEXT
       )
     ''');
 
@@ -34,7 +35,8 @@ class DatabaseHelper {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         question TEXT,
         correctAnswer TEXT,
-        options TEXT
+        options TEXT,
+        imageUrl TEXT
       )
     ''');
 
@@ -43,7 +45,8 @@ class DatabaseHelper {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         question TEXT,
         correctAnswer TEXT,
-        options TEXT
+        options TEXT,
+        imageUrl TEXT
       )
     ''');
 
@@ -52,7 +55,8 @@ class DatabaseHelper {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         question TEXT,
         correctAnswer TEXT,
-        options TEXT
+        options TEXT,
+        imageUrl TEXT
       )
     ''');
 
@@ -99,6 +103,7 @@ class DatabaseHelper {
       batch.insert(tableName, {
         'question': question['question'],
         'correctAnswer': question['correctAnswer'],
+        'imageUrl': question['imageUrl'],
         'options': optionsJson,
       });
     }
@@ -106,15 +111,30 @@ class DatabaseHelper {
     await batch.commit(noResult: true);
   }
 
+  Future<void> resetDatabase() async {
+    final path = await getDatabasesPath();
+    final dbPath = join(path, 'questions.db');
+
+    if (_database != null && _database!.isOpen) {
+      await _database!.close();
+    }
+
+    await deleteDatabase(dbPath);
+
+    _database = null;
+
+    await initializeDatabase();
+  }
+
   Future<List<Question>> getQuestions(String tableName) async {
     final db = await database;
     final List<Map<String, dynamic>> maps = await db.query(tableName);
-    final String teste;
 
     return List.generate(maps.length, (i) {
       return Question(
         id: maps[i]['id'],
         question: maps[i]['question'],
+        imageUrl: maps[i]['imageUrl'],
         correctAnswer: maps[i]['correctAnswer'],
         options: List<String>.from(jsonDecode(maps[i]['options'])),
       );
@@ -126,12 +146,14 @@ class Question {
   final int id;
   final String question;
   final String correctAnswer;
+  final String? imageUrl;
   final List<String> options;
 
   Question({
     required this.id,
     required this.question,
     required this.correctAnswer,
+    this.imageUrl,
     required this.options,
   });
 }
