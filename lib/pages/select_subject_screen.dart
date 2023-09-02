@@ -153,7 +153,7 @@ class SelectSubjectScreen extends StatelessWidget {
                 children: [
                   TextButton.icon(
                     onPressed: () {
-                      subjectRepository.updateSubject('adicao');
+                      subjectRepository.updateSubject('addition');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -194,7 +194,7 @@ class SelectSubjectScreen extends StatelessWidget {
                   SizedBox(width: 10),
                   TextButton.icon(
                     onPressed: () {
-                      subjectRepository.updateSubject('subtracao');
+                      subjectRepository.updateSubject('subtraction');
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => LevelsScreen()),
@@ -243,7 +243,7 @@ class SelectSubjectScreen extends StatelessWidget {
                 children: [
                   TextButton.icon(
                     onPressed: () {
-                      subjectRepository.updateSubject('multiplicacao');
+                      subjectRepository.updateSubject('multiplication');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -285,7 +285,7 @@ class SelectSubjectScreen extends StatelessWidget {
                   SizedBox(width: 10),
                   TextButton.icon(
                     onPressed: () {
-                      subjectRepository.updateSubject('divisao');
+                      subjectRepository.updateSubject('division');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -335,7 +335,7 @@ class SelectSubjectScreen extends StatelessWidget {
                 children: [
                   TextButton.icon(
                     onPressed: () {
-                      subjectRepository.updateSubject('tempo');
+                      subjectRepository.updateSubject('time');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -376,7 +376,7 @@ class SelectSubjectScreen extends StatelessWidget {
                   SizedBox(width: 10),
                   TextButton.icon(
                     onPressed: () {
-                      subjectRepository.updateSubject('dinheiro');
+                      subjectRepository.updateSubject('money');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
