@@ -15,7 +15,6 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
   Color questionColor = Color(0xFFA0A0A0);
   String questionText = "?";
   bool isAnswerCorrect = false;
-  List<String> options = ['', '', ''];
 
   SubjectRepository subjectRepository = SubjectRepository();
   LevelsRepository levelsRepository = LevelsRepository();
@@ -290,19 +289,6 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
     }
   }
 
-  void updateQuestionAndOptions(int currentLevel, String subject) async {
-    final dbHelper = DatabaseHelper();
-    final tableName = '${subject}_questions';
-    final questions = await dbHelper.getQuestions(tableName);
-
-    if (currentLevel <= questions.length) {
-      setState(() {
-        questionText = questions[currentLevel - 1].question;
-        options = questions[currentLevel - 1].options;
-      });
-    }
-  }
-
   Widget buildOptionButton(
       double screenHeight, double screenWidth, String optionText) {
     return ElevatedButton(
@@ -325,14 +311,17 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
     );
   }
 
-  void updateColorQuestionMark(String optionText) {
+  void updateColorQuestionMark(String optionText) async {
     int currentLevel = levelsRepository.currentLevel;
     String subject = subjectRepository.currentSubject;
+
+    final correctAnswer =
+        await getCorrectAnswerFromDatabase(currentLevel, subject);
 
     setState(() {
       questionText = optionText;
 
-      if (optionText == getCorrectAnswerFromDatabase(currentLevel, subject)) {
+      if (correctAnswer != "No option" && optionText == correctAnswer) {
         isAnswerCorrect = true;
       } else {
         isAnswerCorrect = false;
@@ -342,13 +331,28 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
 
   Widget buildOptionsRow(double screenHeight, double screenWidth,
       int currentLevel, String subject) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        buildOptionButton(screenHeight, screenWidth, options[0]),
-        buildOptionButton(screenHeight, screenWidth, options[1]),
-        buildOptionButton(screenHeight, screenWidth, options[2]),
-      ],
+    return FutureBuilder<List<String>>(
+      future: getOptionsFromDatabase(currentLevel, subject),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return CircularProgressIndicator();
+        } else if (snapshot.hasError) {
+          return Text("Erro ao carregar as opções");
+        } else if (snapshot.data != null) {
+          List<String> options = snapshot.data!;
+
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              buildOptionButton(screenHeight, screenWidth, options[0]),
+              buildOptionButton(screenHeight, screenWidth, options[1]),
+              buildOptionButton(screenHeight, screenWidth, options[2]),
+            ],
+          );
+        } else {
+          return SizedBox();
+        }
+      },
     );
   }
 

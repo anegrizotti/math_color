@@ -109,7 +109,7 @@ class SelectSubjectScreen extends StatelessWidget {
             padding: EdgeInsets.only(bottom: screenHeight * 0.03),
             child: TextButton.icon(
               onPressed: () {
-                subjectRepository.updateSubject('contagem');
+                subjectRepository.updateSubject('counting');
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => LevelsScreen()),

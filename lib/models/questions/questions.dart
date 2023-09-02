@@ -120,7 +120,7 @@ const List<Map<String, dynamic>> countingQuestions = [
   {
     "question": "Ordene corretamente: 89, 87, 90, 91, 88:",
     "correctAnswer": "87, 88, 89, 90, 91",
-    "options": ["88, 87, 89, 90, 91", "89, 88, 87, 90, 91", "87, 88, 89, 90, 91"],
+    "options": ["87, 88, 89, 90, 91", "88, 87, 89, 90, 91", "89, 88, 87, 90, 91"],
   },
   {
     "question": "Qual número representa o ábaco abaixo?",

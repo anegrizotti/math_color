@@ -87,6 +87,9 @@ flutter:
     - lib/assets/imagens/imageQuestions/questaoDinheiro2.png
     - lib/assets/imagens/imageQuestions/questaoDinheiro3.png
     - lib/assets/imagens/imageQuestions/questaoDinheiro4.png
+    - lib/assets/imagens/imageQuestions/questaoTempo3.png
+    - lib/assets/imagens/imageQuestions/questaoTempo4.png
+    - lib/assets/imagens/imageQuestions/questaoContagem3.png
   fonts:
   - family: bungee
     fonts:
