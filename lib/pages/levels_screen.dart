@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:math_color/pages/color_screen.dart';
 import 'package:math_color/pages/math_quiz_screen.dart';
 import 'package:math_color/pages/select_subject_screen.dart';
 import 'package:math_color/repositories/subject_repository.dart';
-
-import '../repositories/levels_repository.dart';
+import 'package:math_color/repositories/levels_repository.dart';
 
 class LevelsScreen extends StatelessWidget {
   const LevelsScreen({Key? key}) : super(key: key);
@@ -14,9 +12,42 @@ class LevelsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
+
     LevelsRepository levelsRepository = LevelsRepository();
     SubjectRepository subjectRepository = SubjectRepository();
+
     int currentLevel = levelsRepository.currentLevel;
+
+    Widget buildLevelButton(int level) {
+      return ElevatedButton(
+        onPressed: currentLevel == level
+            ? () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MathQuizScreen()),
+                );
+              }
+            : null,
+        style: ElevatedButton.styleFrom(
+          primary: Color(0xFFE4C0A8),
+          onPrimary: Colors.black,
+          shape: CircleBorder(),
+          side: BorderSide(color: Colors.black, width: 2),
+          minimumSize: Size(screenWidth * 0.3, screenHeight * 0.08),
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(12.0),
+          child: Text(
+            level.toString(),
+            style: TextStyle(
+              fontSize: 45,
+              fontFamily: 'craft',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      );
+    }
 
     return Scaffold(
       backgroundColor: Color(0xFFB6D993),
@@ -35,7 +66,7 @@ class LevelsScreen extends StatelessWidget {
                     actions: [
                       TextButton(
                         onPressed: () {
-                          Navigator.pop(context); // Fechar o diálogo
+                          Navigator.pop(context);
                         },
                         child: Text("Cancelar"),
                       ),
@@ -56,7 +87,7 @@ class LevelsScreen extends StatelessWidget {
                 },
               );
             },
-            iconSize: screenWidth * 0.05, // Ajustar o tamanho do ícone
+            iconSize: screenWidth * 0.05,
             color: Color(0xFFFF0000),
           ),
         ],
@@ -96,151 +127,14 @@ class LevelsScreen extends StatelessWidget {
             ),
           ),
           SizedBox(height: 30),
-          ElevatedButton(
-            onPressed: currentLevel == 1
-                ? () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => MathQuizScreen()),
-                    );
-                  }
-                : null,
-            style: ElevatedButton.styleFrom(
-              primary: Color(0xFFE4C0A8),
-              onPrimary: Colors.black,
-              shape: CircleBorder(),
-              side: BorderSide(color: Colors.black, width: 2),
-              minimumSize: Size(screenWidth * 0.3, screenHeight * 0.08),
+          // Cria botões de nível dinamicamente
+          for (int i = 1; i <= 5; i++)
+            Column(
+              children: [
+                buildLevelButton(i),
+                SizedBox(height: screenHeight * 0.035),
+              ],
             ),
-            child: Padding(
-              padding: EdgeInsets.all(12.0),
-              child: Text(
-                '1',
-                style: TextStyle(
-                  fontSize: 45,
-                  fontFamily: 'craft',
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: screenHeight * 0.035),
-          ElevatedButton(
-            onPressed: currentLevel == 2
-                ? () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => MathQuizScreen()),
-                    );
-                  }
-                : null,
-            style: ElevatedButton.styleFrom(
-              primary: Color(0xFFE4C0A8),
-              onPrimary: Colors.black,
-              shape: CircleBorder(),
-              side: BorderSide(color: Colors.black, width: 2),
-              minimumSize: Size(screenWidth * 0.3, screenHeight * 0.08),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(12.0),
-              child: Text(
-                '2',
-                style: TextStyle(
-                  fontSize: 45,
-                  fontFamily: 'craft',
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: screenHeight * 0.035),
-          ElevatedButton(
-            onPressed: currentLevel == 3
-                ? () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => MathQuizScreen()),
-                    );
-                  }
-                : null,
-            style: ElevatedButton.styleFrom(
-              primary: Color(0xFFE4C0A8),
-              onPrimary: Colors.black,
-              shape: CircleBorder(),
-              side: BorderSide(color: Colors.black, width: 2),
-              minimumSize: Size(screenWidth * 0.3, screenHeight * 0.08),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(12.0),
-              child: Text(
-                '3',
-                style: TextStyle(
-                  fontSize: 45,
-                  fontFamily: 'craft',
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: screenHeight * 0.035),
-          ElevatedButton(
-            onPressed: currentLevel == 4
-                ? () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => MathQuizScreen()),
-                    );
-                  }
-                : null,
-            style: ElevatedButton.styleFrom(
-              primary: Color(0xFFE4C0A8),
-              onPrimary: Colors.black,
-              shape: CircleBorder(),
-              side: BorderSide(color: Colors.black, width: 2),
-              minimumSize: Size(screenWidth * 0.3, screenHeight * 0.08),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(12.0),
-              child: Text(
-                '4',
-                style: TextStyle(
-                  fontSize: 45,
-                  fontFamily: 'craft',
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: screenHeight * 0.035),
-          ElevatedButton(
-            onPressed: currentLevel == 5
-                ? () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => MathQuizScreen()),
-                    );
-                  }
-                : null,
-            style: ElevatedButton.styleFrom(
-              primary: Color(0xFFE4C0A8),
-              onPrimary: Colors.black,
-              shape: CircleBorder(),
-              side: BorderSide(color: Colors.black, width: 2),
-              minimumSize: Size(screenWidth * 0.3, screenHeight * 0.08),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(12.0),
-              child: Text(
-                '5',
-                style: TextStyle(
-                  fontSize: 45,
-                  fontFamily: 'craft',
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: screenHeight * 0.09),
           ElevatedButton(
             onPressed: currentLevel == 6
                 ? () {
