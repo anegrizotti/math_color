@@ -126,7 +126,7 @@ const List<Map<String, dynamic>> countingQuestions = [
     "question": "Qual número representa o ábaco abaixo?",
     "correctAnswer": "654",
     "options": ["456", "654", "645"],
-    "imageUrl": "caminho/para/imagem/654.png",
+    "imageUrl": "questaoContagem3.png",
   },
   {
     "question": "João tem 5 balas, Maria tem 3 balas e José tem 7 balas. Quem tem mais balas?",
@@ -155,13 +155,13 @@ const List<Map<String, dynamic>> timeQuestions = [
     "question": "Carla está estudando para uma prova e para não esquecer, ela marcou em seu calendário o dia que acontecerá a prova. Qual o dia da semana Carla fará sua prova?",
     "correctAnswer": "Quinta-feira",
     "options": ["Terça-feira", "Quarta-feira", "Quinta-feira"],
-    "imageUrl": "caminho/para/imagem/livros.png",
+    "imageUrl": "questaoTempo3.png",
   },
   {
     "question": "Perin ganhou um relógio, mas não sabe dizer as horas. Qual horário o relógio de Perin está marcando?",
     "correctAnswer": "1 hora e 30 minutos",
     "options": ["12 horas", "1 hora e 15 minutos", "1 hora e 30 minutos"],
-    "imageUrl": "caminho/para/imagem/relogio.png",
+    "imageUrl": "questaoTempo4.png",
   },
   {
     "question": "Wilson gosta muito de ler. Ela leu dois livros em 3 semanas. Quantos dias Wilson levou para ler os livros?",
@@ -178,7 +178,7 @@ const List<Map<String, dynamic>> moneyQuestions = [
   },
   {
     "question": "Qual nota tem o maior valor?",
-    "correctAnswer": "R\$50",
+    "correctAnswer": "R\$50,00",
     "options": ["R\$20,00", "R\$50,00", "R\$100,00"],
     "imageUrl": "questaoDinheiro2.png",
   },
