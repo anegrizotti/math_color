@@ -3,10 +3,12 @@ import 'package:math_color/pages/select_subject_screen.dart';
 import 'package:math_color/repositories/levels_repository.dart';
 import 'package:path/path.dart' as path;
 import 'database/db.dart';
+import 'models/images/images.dart';
 import 'models/questions/questions.dart';
 
 void main() async {
   runApp(MyApp());
+
   LevelsRepository levelsRepository = LevelsRepository();
   levelsRepository.resetCurrentLevel();
 
@@ -21,6 +23,8 @@ void main() async {
   await dbHelper.insertQuestions(countingQuestions, 'counting_questions');
   await dbHelper.insertQuestions(timeQuestions, 'time_questions');
   await dbHelper.insertQuestions(moneyQuestions, 'money_questions');
+
+  await dbHelper.insertImages(imageUrls);
 }
 
 class MyApp extends StatelessWidget {
@@ -115,7 +119,7 @@ class MyApp extends StatelessWidget {
                     SizedBox(height: screenHeight * 0.03),
                     Expanded(
                       child: Image.asset(
-                        path.join('lib', 'assets', 'imagens', 'telainicial.png'),
+                        path.join('lib', 'assets', 'imagens', 'pagesImages','telainicial.png'),
                         fit: BoxFit.contain,
                         height: screenHeight * 0.3,
                       ),

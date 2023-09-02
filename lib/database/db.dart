@@ -89,6 +89,13 @@ class DatabaseHelper {
         imageUrl TEXT
       )
     ''');
+
+        await db.execute('''
+      CREATE TABLE images(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        imageUrl TEXT
+      )
+    ''');
       },
     );
   }
@@ -106,6 +113,17 @@ class DatabaseHelper {
         'imageUrl': question['imageUrl'],
         'options': optionsJson,
       });
+    }
+
+    await batch.commit(noResult: true);
+  }
+
+  Future<void> insertImages(List<String> imageUrls) async {
+    final db = await database;
+    final batch = db.batch();
+
+    for (var imageUrl in imageUrls) {
+      batch.insert('images', {'imageUrl': imageUrl});
     }
 
     await batch.commit(noResult: true);
@@ -138,6 +156,14 @@ class DatabaseHelper {
         correctAnswer: maps[i]['correctAnswer'],
         options: List<String>.from(jsonDecode(maps[i]['options'])),
       );
+    });
+  }
+
+  Future<List<String>> getImageUrls() async {
+    final db = await database;
+    final List<Map<String, dynamic>> maps = await db.query('images');
+    return List.generate(maps.length, (i) {
+      return maps[i]['imageUrl'];
     });
   }
 }

@@ -129,7 +129,7 @@ class SelectSubjectScreen extends StatelessWidget {
                 ),
               ),
               icon: Image.asset(
-                path.join('lib', 'assets', 'imagens', 'Contagem.png'),
+                path.join('lib', 'assets', 'imagens', 'pagesImages', 'contagem.png'),
                 width: screenHeight * 0.5,
                 height: screenWidth * 0.1,
               ),
@@ -176,7 +176,7 @@ class SelectSubjectScreen extends StatelessWidget {
                       ),
                     ),
                     icon: Image.asset(
-                      path.join('lib', 'assets', 'imagens', 'adicao.png'),
+                      path.join('lib', 'assets', 'imagens', 'pagesImages', 'adicao.png'),
                       width: screenHeight * 0.235,
                       height: screenWidth * 0.1,
                     ),
@@ -216,7 +216,7 @@ class SelectSubjectScreen extends StatelessWidget {
                       ),
                     ),
                     icon: Image.asset(
-                      path.join('lib', 'assets', 'imagens', 'subtracao.png'),
+                      path.join('lib', 'assets', 'imagens', 'pagesImages', 'subtracao.png'),
                       width: screenHeight * 0.235,
                       height: screenWidth * 0.1,
                     ),
@@ -267,7 +267,7 @@ class SelectSubjectScreen extends StatelessWidget {
                     ),
                     icon: Image.asset(
                       path.join(
-                          'lib', 'assets', 'imagens', 'multiplicacao.png'),
+                          'lib', 'assets', 'imagens', 'pagesImages', 'multiplicacao.png'),
                       width: screenHeight * 0.235,
                       height: screenWidth * 0.1,
                     ),
@@ -308,7 +308,7 @@ class SelectSubjectScreen extends StatelessWidget {
                       ),
                     ),
                     icon: Image.asset(
-                      path.join('lib', 'assets', 'imagens', 'divisao.png'),
+                      path.join('lib', 'assets', 'imagens', 'pagesImages', 'divisao.png'),
                       width: screenHeight * 0.235,
                       height: screenWidth * 0.1,
                     ),
@@ -358,7 +358,7 @@ class SelectSubjectScreen extends StatelessWidget {
                       ),
                     ),
                     icon: Image.asset(
-                      path.join('lib', 'assets', 'imagens', 'tempo.png'),
+                      path.join('lib', 'assets', 'imagens', 'pagesImages', 'tempo.png'),
                       width: screenHeight * 0.235,
                       height: screenWidth * 0.1,
                     ),
@@ -399,7 +399,7 @@ class SelectSubjectScreen extends StatelessWidget {
                       ),
                     ),
                     icon: Image.asset(
-                      path.join('lib', 'assets', 'imagens', 'dinheiro.png'),
+                      path.join('lib', 'assets', 'imagens', 'pagesImages', 'dinheiro.png'),
                       width: screenHeight * 0.235,
                       height: screenWidth * 0.1,
                     ),

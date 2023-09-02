@@ -245,7 +245,7 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
                       'lib',
                       'assets',
                       'imagens',
-                      'imageQuestions',
+                      'questionsImages',
                       snapshot.data!,
                     ),
                     width: screenWidth * 0.7,

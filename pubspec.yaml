@@ -57,14 +57,14 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - lib/assets/imagens/telainicial.png
-    - lib/assets/imagens/Contagem.png
-    - lib/assets/imagens/adicao.png
-    - lib/assets/imagens/subtracao.png
-    - lib/assets/imagens/multiplicacao.png
-    - lib/assets/imagens/divisao.png
-    - lib/assets/imagens/tempo.png
-    - lib/assets/imagens/dinheiro.png
+    - lib/assets/imagens/pagesImages/telainicial.png
+    - lib/assets/imagens/pagesImages/contagem.png
+    - lib/assets/imagens/pagesImages/adicao.png
+    - lib/assets/imagens/pagesImages/subtracao.png
+    - lib/assets/imagens/pagesImages/multiplicacao.png
+    - lib/assets/imagens/pagesImages/divisao.png
+    - lib/assets/imagens/pagesImages/tempo.png
+    - lib/assets/imagens/pagesImages/dinheiro.png
     - lib/assets/imagens/colorImages/astronauta.png
     - lib/assets/imagens/colorImages/cachorro1.png
     - lib/assets/imagens/colorImages/cachorro2.png
@@ -84,12 +84,12 @@ flutter:
     - lib/assets/imagens/colorImages/solLua.png
     - lib/assets/imagens/colorImages/sorvete.png
     - lib/assets/imagens/colorImages/tartaruga.png
-    - lib/assets/imagens/imageQuestions/questaoDinheiro2.png
-    - lib/assets/imagens/imageQuestions/questaoDinheiro3.png
-    - lib/assets/imagens/imageQuestions/questaoDinheiro4.png
-    - lib/assets/imagens/imageQuestions/questaoTempo3.png
-    - lib/assets/imagens/imageQuestions/questaoTempo4.png
-    - lib/assets/imagens/imageQuestions/questaoContagem3.png
+    - lib/assets/imagens/questionsImages/questaoDinheiro2.png
+    - lib/assets/imagens/questionsImages/questaoDinheiro3.png
+    - lib/assets/imagens/questionsImages/questaoDinheiro4.png
+    - lib/assets/imagens/questionsImages/questaoTempo3.png
+    - lib/assets/imagens/questionsImages/questaoTempo4.png
+    - lib/assets/imagens/questionsImages/questaoContagem3.png
   fonts:
   - family: bungee
     fonts:
