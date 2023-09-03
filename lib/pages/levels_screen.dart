@@ -54,6 +54,7 @@ class LevelsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Color(0xFFFFF197),
         elevation: 0,
+        automaticallyImplyLeading: false,
         actions: [
           IconButton(
             icon: Icon(Icons.close),

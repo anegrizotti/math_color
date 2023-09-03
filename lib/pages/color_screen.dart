@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:floodfill_image/floodfill_image.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:math_color/pages/select_subject_screen.dart';
 import 'package:math_color/repositories/levels_repository.dart';
 import '../database/db.dart';
@@ -13,8 +12,27 @@ class ColorizeImageScreen extends StatefulWidget {
 }
 
 class _ColorizeImageScreenState extends State<ColorizeImageScreen> {
-  Color _selectedColor = Color(0xFFEBA1CB);
+  Color _selectedColor = Colors.yellow;
   String randomImageUrl = '';
+
+  List<Color> predefinedColors = [
+    Colors.red,
+    Colors.blue,
+    Colors.green,
+    Colors.yellow,
+    Colors.purple,
+    Colors.orange,
+    Colors.pink,
+    Colors.teal,
+    Colors.indigo,
+    Colors.black,
+    Color.fromARGB(255, 255, 162, 56),
+    Color(0xFFA4A4A4),
+    Color(0xFF61210B),
+    Color.fromARGB(255, 255, 211, 222),
+    Color.fromARGB(255, 213, 90, 238),
+    Color.fromARGB(255, 146, 212, 255),
+  ];
 
   @override
   void initState() {
@@ -33,35 +51,67 @@ class _ColorizeImageScreenState extends State<ColorizeImageScreen> {
   }
 
   void openColorPicker(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Selecione uma cor'),
-          content: SingleChildScrollView(
-            child: ColorPicker(
-              pickerColor: _selectedColor,
-              onColorChanged: (color) {
-                setState(() {
-                  _selectedColor = color;
-                });
-              },
-              showLabel: true,
-              pickerAreaHeightPercent: 0.8,
-            ),
+  final List<Color> topColors = predefinedColors.sublist(0, 8);
+  final List<Color> bottomColors = predefinedColors.sublist(8);
+
+  final double circlePadding = 8.0; // Espaçamento entre os círculos
+
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Selecione uma cor'),
+        content: SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: topColors.map((color) {
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _selectedColor = color;
+                        Navigator.of(context).pop();
+                      });
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.all(circlePadding),
+                      child: CircleAvatar(
+                        backgroundColor: color,
+                        radius: 20.0,
+                      ),
+                    ),
+                  );
+                }).toList(),
+              ),
+              SizedBox(height: 20.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: bottomColors.map((color) {
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _selectedColor = color;
+                        Navigator.of(context).pop();
+                      });
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.all(circlePadding),
+                      child: CircleAvatar(
+                        backgroundColor: color,
+                        radius: 20.0,
+                      ),
+                    ),
+                  );
+                }).toList(),
+              ),
+            ],
           ),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('Escolher'),
-            ),
-          ],
-        );
-      },
-    );
-  }
+        ),
+      );
+    },
+  );
+}
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +122,7 @@ class _ColorizeImageScreenState extends State<ColorizeImageScreen> {
       appBar: AppBar(
         backgroundColor: Color(0xFFFFF197),
         elevation: 0,
+        automaticallyImplyLeading: false,
         actions: [
           IconButton(
             icon: Icon(Icons.close),
@@ -96,7 +147,7 @@ class _ColorizeImageScreenState extends State<ColorizeImageScreen> {
 
   Widget buildColorSelectionButton() {
     return Container(
-      color: Color(0xFFFC7EBF2),
+      color: Color(0xFFFFF197),
       padding: EdgeInsets.all(10),
       child: ElevatedButton(
         onPressed: () {

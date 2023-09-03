@@ -57,6 +57,7 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
     return AppBar(
       backgroundColor: Color(0xFFFFF197),
       elevation: 0,
+      automaticallyImplyLeading: false,
       actions: [
         IconButton(
           icon: Icon(Icons.close),
@@ -343,22 +344,22 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
           List<String> options = snapshot.data!;
 
           return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Expanded(
-              flex: 2,
-              child: buildOptionButton(screenHeight, screenWidth, options[0]),
-            ),
-            Expanded(
-              flex: 2,
-              child: buildOptionButton(screenHeight, screenWidth, options[1]),
-            ),
-            Expanded(
-              flex: 2,
-              child: buildOptionButton(screenHeight, screenWidth, options[2]),
-            ),
-          ],
-        );
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Expanded(
+                flex: 2,
+                child: buildOptionButton(screenHeight, screenWidth, options[0]),
+              ),
+              Expanded(
+                flex: 2,
+                child: buildOptionButton(screenHeight, screenWidth, options[1]),
+              ),
+              Expanded(
+                flex: 2,
+                child: buildOptionButton(screenHeight, screenWidth, options[2]),
+              ),
+            ],
+          );
         } else {
           return SizedBox();
         }
