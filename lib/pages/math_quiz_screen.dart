@@ -343,13 +343,22 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
           List<String> options = snapshot.data!;
 
           return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              buildOptionButton(screenHeight, screenWidth, options[0]),
-              buildOptionButton(screenHeight, screenWidth, options[1]),
-              buildOptionButton(screenHeight, screenWidth, options[2]),
-            ],
-          );
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Expanded(
+              flex: 2,
+              child: buildOptionButton(screenHeight, screenWidth, options[0]),
+            ),
+            Expanded(
+              flex: 2,
+              child: buildOptionButton(screenHeight, screenWidth, options[1]),
+            ),
+            Expanded(
+              flex: 2,
+              child: buildOptionButton(screenHeight, screenWidth, options[2]),
+            ),
+          ],
+        );
         } else {
           return SizedBox();
         }
