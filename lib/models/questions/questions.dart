@@ -21,7 +21,7 @@ const List<Map<String, dynamic>> additionQuestions = [
   },
   {
     "question":
-        "Ane Luisy foi à feira e comprou 1 laranja, 2 abacaxis e 7 mamões para preparar a festa da escola. Quantas frutas ela comprou?",
+        "Ane foi à feira e comprou 1 laranja, 2 abacaxis e 7 mamões para preparar a festa da escola. Quantas frutas ela comprou?",
     "correctAnswer": "10",
     "options": ["8", "10", "11"],
   },
@@ -49,7 +49,7 @@ const List<Map<String, dynamic>> subtractionQuestions = [
     "options": ["59", "64", "68"],
   },
   {
-    "question": "Vilma fez 125 docinhos, em menos de 1 semana ela vendeu 100 doces. Quantos doces ainda faltam para serem vendidos?",
+    "question": "Vilma fez 125 doces e vendeu 100 doces. Quantos doces ainda faltam para serem vendidos?",
     "correctAnswer": "25",
     "options": ["15", "20", "25"],
   },
@@ -152,13 +152,13 @@ const List<Map<String, dynamic>> timeQuestions = [
     "options": ["30 minutos", "60 minutos", "90 minutos"],
   },
   {
-    "question": "Carla está estudando para uma prova e para não esquecer, ela marcou em seu calendário o dia que acontecerá a prova. Qual o dia da semana Carla fará sua prova?",
+    "question": "Qual o dia da semana está marcando no calendário abaixo?",
     "correctAnswer": "Quinta-feira",
     "options": ["Terça-feira", "Quarta-feira", "Quinta-feira"],
     "imageUrl": "questaoTempo3.png",
   },
   {
-    "question": "Perin ganhou um relógio, mas não sabe dizer as horas. Qual horário o relógio de Perin está marcando?",
+    "question": "Qual horário o relógio abaixo está marcando?",
     "correctAnswer": "1 hora e 30 minutos",
     "options": ["12 horas", "1 hora e 15 minutos", "1 hora e 30 minutos"],
     "imageUrl": "questaoTempo4.png",
@@ -195,7 +195,7 @@ const List<Map<String, dynamic>> moneyQuestions = [
     "imageUrl": "questaoDinheiro4.png",
   },
   {
-    "question": "Ailton tem 5 moedas de 50 centavos. Quanto ele tem em dinheiro?",
+    "question": "Alexandre tem 5 moedas de 50 centavos. Quanto ele tem em dinheiro?",
     "correctAnswer": "R\$2,50",
     "options": ["R\$1,00", "R\$2,00", "R\$2,50"],
   },

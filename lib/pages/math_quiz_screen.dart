@@ -293,7 +293,7 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
       double screenHeight, double screenWidth, String optionText) {
     return ElevatedButton(
       onPressed: () {
-        updateColorQuestionMark(optionText);
+        updateColorQuestionMark(optionText, Color(0xFFC7EBF2));
       },
       style: ElevatedButton.styleFrom(
         primary: Color(0xFFB6D993),
@@ -311,7 +311,7 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
     );
   }
 
-  void updateColorQuestionMark(String optionText) async {
+  void updateColorQuestionMark(String optionText, Color optionColor) async {
     int currentLevel = levelsRepository.currentLevel;
     String subject = subjectRepository.currentSubject;
 
@@ -320,6 +320,7 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
 
     setState(() {
       questionText = optionText;
+      questionColor = optionColor;
 
       if (correctAnswer != "No option" && optionText == correctAnswer) {
         isAnswerCorrect = true;
