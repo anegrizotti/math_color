@@ -3,7 +3,7 @@
 <p>O MathColor é um aplicativo móvel divertido e educativo que tem como objetivo incentivar crianças no estudo da matemática. Com o MathColor, as crianças podem aprender matemática enquanto se divertem colorindo imagens adoráveis. O aplicativo é adequado para crianças do Ensino Fundamental I.</p>
 
 <h2>Como Funciona</h2>
-<p>O MathColor é fácil de usar. Basta baixar o aplicativo Google Play e começar a usá-lo imediatamente. As crianças podem colorir uma variedade de imagens divertidas. Cada assunto matemático tem um conjunto de problemas para resolver. Conforme as crianças resolvem os problemas, elas ganham acesso a uma imagem para colorir. Quando a imagem é totalmente colorida, as crianças podem finalizar a pintura e então, escolher um outro tópico matemático para jogar.</p>
+<p>O MathColor é fácil de usar. Basta baixar o aplicativo na Google Play e começar a usá-lo imediatamente. As crianças podem colorir uma variedade de imagens divertidas. Cada assunto matemático tem um conjunto de problemas para resolver. Conforme as crianças resolvem os problemas, elas ganham acesso a uma imagem para colorir. Quando a imagem é totalmente colorida, as crianças podem finalizar a pintura e então, escolher um outro tópico matemático para jogar.</p>
 
 <h2>Recursos</h2>
 <ul>
