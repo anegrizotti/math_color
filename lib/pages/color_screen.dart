@@ -190,8 +190,8 @@ class _ColorizeImageScreenState extends State<ColorizeImageScreen> {
                   shadows: [
                     Shadow(
                       offset: Offset(2.0, 2.0),
-                      blurRadius: 5.0,
-                      color: Color(0xFF00FFFF),
+                      blurRadius: 0.0,
+                      color: Colors.black,
                     ),
                   ],
                 ),
