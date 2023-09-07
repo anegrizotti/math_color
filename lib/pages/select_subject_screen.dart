@@ -22,14 +22,7 @@ class SelectSubjectScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Color(0xFFFFF197),
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          iconSize: screenWidth * 0.05,
-          color: Color(0xFFFB6D993),
-        ),
+        automaticallyImplyLeading: false,
         actions: [
           IconButton(
             icon: Icon(Icons.close),
@@ -129,7 +122,8 @@ class SelectSubjectScreen extends StatelessWidget {
                 ),
               ),
               icon: Image.asset(
-                path.join('lib', 'assets', 'imagens', 'pagesImages', 'contagem.png'),
+                path.join(
+                    'lib', 'assets', 'imagens', 'pagesImages', 'contagem.png'),
                 width: screenHeight * 0.5,
                 height: screenWidth * 0.1,
               ),
@@ -156,8 +150,7 @@ class SelectSubjectScreen extends StatelessWidget {
                       subjectRepository.updateSubject('addition');
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => LevelsScreen()),
+                        MaterialPageRoute(builder: (context) => LevelsScreen()),
                       );
                     },
                     style: ButtonStyle(
@@ -176,7 +169,8 @@ class SelectSubjectScreen extends StatelessWidget {
                       ),
                     ),
                     icon: Image.asset(
-                      path.join('lib', 'assets', 'imagens', 'pagesImages', 'adicao.png'),
+                      path.join('lib', 'assets', 'imagens', 'pagesImages',
+                          'adicao.png'),
                       width: screenHeight * 0.235,
                       height: screenWidth * 0.1,
                     ),
@@ -216,7 +210,8 @@ class SelectSubjectScreen extends StatelessWidget {
                       ),
                     ),
                     icon: Image.asset(
-                      path.join('lib', 'assets', 'imagens', 'pagesImages', 'subtracao.png'),
+                      path.join('lib', 'assets', 'imagens', 'pagesImages',
+                          'subtracao.png'),
                       width: screenHeight * 0.235,
                       height: screenWidth * 0.1,
                     ),
@@ -246,8 +241,7 @@ class SelectSubjectScreen extends StatelessWidget {
                       subjectRepository.updateSubject('multiplication');
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => LevelsScreen()),
+                        MaterialPageRoute(builder: (context) => LevelsScreen()),
                       );
                     },
                     style: ButtonStyle(
@@ -266,8 +260,8 @@ class SelectSubjectScreen extends StatelessWidget {
                       ),
                     ),
                     icon: Image.asset(
-                      path.join(
-                          'lib', 'assets', 'imagens', 'pagesImages', 'multiplicacao.png'),
+                      path.join('lib', 'assets', 'imagens', 'pagesImages',
+                          'multiplicacao.png'),
                       width: screenHeight * 0.235,
                       height: screenWidth * 0.1,
                     ),
@@ -288,8 +282,7 @@ class SelectSubjectScreen extends StatelessWidget {
                       subjectRepository.updateSubject('division');
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => LevelsScreen()),
+                        MaterialPageRoute(builder: (context) => LevelsScreen()),
                       );
                     },
                     style: ButtonStyle(
@@ -308,7 +301,8 @@ class SelectSubjectScreen extends StatelessWidget {
                       ),
                     ),
                     icon: Image.asset(
-                      path.join('lib', 'assets', 'imagens', 'pagesImages', 'divisao.png'),
+                      path.join('lib', 'assets', 'imagens', 'pagesImages',
+                          'divisao.png'),
                       width: screenHeight * 0.235,
                       height: screenWidth * 0.1,
                     ),
@@ -338,8 +332,7 @@ class SelectSubjectScreen extends StatelessWidget {
                       subjectRepository.updateSubject('time');
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => LevelsScreen()),
+                        MaterialPageRoute(builder: (context) => LevelsScreen()),
                       );
                     },
                     style: ButtonStyle(
@@ -358,7 +351,8 @@ class SelectSubjectScreen extends StatelessWidget {
                       ),
                     ),
                     icon: Image.asset(
-                      path.join('lib', 'assets', 'imagens', 'pagesImages', 'tempo.png'),
+                      path.join('lib', 'assets', 'imagens', 'pagesImages',
+                          'tempo.png'),
                       width: screenHeight * 0.235,
                       height: screenWidth * 0.1,
                     ),
@@ -379,8 +373,7 @@ class SelectSubjectScreen extends StatelessWidget {
                       subjectRepository.updateSubject('money');
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => LevelsScreen()),
+                        MaterialPageRoute(builder: (context) => LevelsScreen()),
                       );
                     },
                     style: ButtonStyle(
@@ -399,7 +392,8 @@ class SelectSubjectScreen extends StatelessWidget {
                       ),
                     ),
                     icon: Image.asset(
-                      path.join('lib', 'assets', 'imagens', 'pagesImages', 'dinheiro.png'),
+                      path.join('lib', 'assets', 'imagens', 'pagesImages',
+                          'dinheiro.png'),
                       width: screenHeight * 0.235,
                       height: screenWidth * 0.1,
                     ),

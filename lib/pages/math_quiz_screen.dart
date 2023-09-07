@@ -1,10 +1,14 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:math_color/pages/select_subject_screen.dart';
 import '../database/db.dart';
 import '../repositories/levels_repository.dart';
 import '../repositories/subject_repository.dart';
 import 'levels_screen.dart';
 import 'package:path/path.dart' as path;
+import 'package:just_audio/just_audio.dart';
 
 class MathQuizScreen extends StatefulWidget {
   @override
@@ -18,6 +22,7 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
 
   SubjectRepository subjectRepository = SubjectRepository();
   LevelsRepository levelsRepository = LevelsRepository();
+  final player = AudioPlayer();
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +56,11 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
         ],
       ),
     );
+  }
+
+  void loadSoundEffect(soundEffect) async {
+    final sound = await player.setUrl(soundEffect);
+    player.play();
   }
 
   AppBar buildAppBar() {
@@ -374,6 +384,8 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
       child: ElevatedButton(
         onPressed: () {
+          loadSoundEffect(
+              'asset://lib/lib/assets/soundEffects/proximoSom.mp3');
           if (isAnswerCorrect) {
             levelsRepository.completeLevel();
             Navigator.push(
@@ -384,6 +396,8 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
             showDialog(
               context: context,
               builder: (BuildContext context) {
+                loadSoundEffect(
+                    'asset://lib/lib/assets/soundEffects/respostaErradaSom.mp3');
                 return AlertDialog(
                   title: Text("Resposta Errada"),
                   content: Text("Tente novamente!"),

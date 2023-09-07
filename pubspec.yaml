@@ -39,6 +39,7 @@ dependencies:
   flutter_colorpicker: ^1.0.3
   floodfill_image: ^0.0.8
   flutter_icons: ^1.1.0
+  just_audio: ^0.9.34
 
 dev_dependencies:
   flutter_test:
@@ -90,6 +91,10 @@ flutter:
     - lib/assets/imagens/questionsImages/questaoTempo3.png
     - lib/assets/imagens/questionsImages/questaoTempo4.png
     - lib/assets/imagens/questionsImages/questaoContagem3.png
+    - lib/assets/soundEffects/concluidoSom.mp3
+    - lib/assets/soundEffects/proximoSom.mp3
+    - lib/assets/soundEffects/respostaErradaSom.mp3
+
   fonts:
   - family: bungee
     fonts:
