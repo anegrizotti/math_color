@@ -9,6 +9,7 @@ import '../repositories/subject_repository.dart';
 import 'levels_screen.dart';
 import 'package:path/path.dart' as path;
 import 'package:just_audio/just_audio.dart';
+import 'package:quickalert/quickalert.dart';
 
 class MathQuizScreen extends StatefulWidget {
   @override
@@ -72,32 +73,21 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
         IconButton(
           icon: Icon(Icons.close),
           onPressed: () {
-            showDialog(
+            QuickAlert.show(
               context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: Text("Deseja desistir?"),
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pop(context); // Fechar o diálogo
-                      },
-                      child: Text("Cancelar"),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        levelsRepository.resetCurrentLevel();
-                        subjectRepository.resetSubject();
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SelectSubjectScreen()),
-                        );
-                      },
-                      child: Text("Desistir"),
-                    ),
-                  ],
-                );
+              type: QuickAlertType.confirm,
+              title: 'Deseja desistir?',
+              cancelBtnText: 'Cancelar',
+              onCancelBtnTap: () => {Navigator.pop(context)},
+              confirmBtnText: 'Desistir',
+              onConfirmBtnTap: () => {
+                levelsRepository.resetCurrentLevel(),
+                subjectRepository.resetSubject(),
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SelectSubjectScreen()),
+                ),
               },
             );
           },
@@ -384,8 +374,7 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
       child: ElevatedButton(
         onPressed: () {
-          loadSoundEffect(
-              'asset://lib/lib/assets/soundEffects/proximoSom.mp3');
+          loadSoundEffect('asset://lib/lib/assets/soundEffects/proximoSom.mp3');
           if (isAnswerCorrect) {
             levelsRepository.completeLevel();
             Navigator.push(
@@ -393,25 +382,14 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
               MaterialPageRoute(builder: (context) => LevelsScreen()),
             );
           } else {
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                loadSoundEffect(
-                    'asset://lib/lib/assets/soundEffects/respostaErradaSom.mp3');
-                return AlertDialog(
-                  title: Text("Resposta Errada"),
-                  content: Text("Tente novamente!"),
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text("OK"),
-                    ),
-                  ],
-                );
-              },
-            );
+            loadSoundEffect(
+                'asset://lib/lib/assets/soundEffects/respostaErradaSom.mp3');
+            QuickAlert.show(
+                context: context,
+                type: QuickAlertType.error,
+                title: 'Resposta Errada',
+                text: 'Tente novamente!',
+                confirmBtnText: 'Ok');
           }
         },
         style: ElevatedButton.styleFrom(

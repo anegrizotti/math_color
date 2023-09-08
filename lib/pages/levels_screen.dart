@@ -5,6 +5,7 @@ import 'package:math_color/pages/select_subject_screen.dart';
 import 'package:math_color/repositories/subject_repository.dart';
 import 'package:math_color/repositories/levels_repository.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:quickalert/quickalert.dart';
 
 class LevelsScreen extends StatelessWidget {
   const LevelsScreen({Key? key}) : super(key: key);
@@ -66,32 +67,21 @@ class LevelsScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.close),
             onPressed: () {
-              showDialog(
+              QuickAlert.show(
                 context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: Text("Deseja desistir?"),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: Text("Cancelar"),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          levelsRepository.resetCurrentLevel();
-                          subjectRepository.resetSubject();
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SelectSubjectScreen()),
-                          );
-                        },
-                        child: Text("Desistir"),
-                      ),
-                    ],
-                  );
+                type: QuickAlertType.confirm,
+                title: 'Deseja desistir?',
+                cancelBtnText: 'Cancelar',
+                onCancelBtnTap: () => {Navigator.pop(context)},
+                confirmBtnText: 'Desistir',
+                onConfirmBtnTap: () => {
+                  levelsRepository.resetCurrentLevel(),
+                  subjectRepository.resetSubject(),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SelectSubjectScreen()),
+                  ),
                 },
               );
             },
@@ -146,7 +136,8 @@ class LevelsScreen extends StatelessWidget {
           ElevatedButton(
             onPressed: currentLevel == 6
                 ? () {
-                  loadSoundEffect('asset://lib/lib/assets/soundEffects/concluidoSom.mp3');
+                    loadSoundEffect(
+                        'asset://lib/lib/assets/soundEffects/concluidoSom.mp3');
                     Navigator.push(
                       context,
                       MaterialPageRoute(
