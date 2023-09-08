@@ -9,7 +9,7 @@ import '../repositories/subject_repository.dart';
 import 'levels_screen.dart';
 import 'package:path/path.dart' as path;
 import 'package:just_audio/just_audio.dart';
-import 'package:quickalert/quickalert.dart';
+import 'package:panara_dialogs/panara_dialogs.dart';
 
 class MathQuizScreen extends StatefulWidget {
   @override
@@ -73,14 +73,15 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
         IconButton(
           icon: Icon(Icons.close),
           onPressed: () {
-            QuickAlert.show(
-              context: context,
-              type: QuickAlertType.confirm,
-              title: 'Deseja desistir?',
-              cancelBtnText: 'Cancelar',
-              onCancelBtnTap: () => {Navigator.pop(context)},
-              confirmBtnText: 'Desistir',
-              onConfirmBtnTap: () => {
+            PanaraConfirmDialog.show(
+              context,
+              title: "Deseja desistir?",
+              message: '',
+              panaraDialogType: PanaraDialogType.warning,
+              confirmButtonText: 'Desistir',
+              cancelButtonText: 'Cancelar',
+              onTapCancel: () => {Navigator.pop(context)},
+              onTapConfirm: () => {
                 levelsRepository.resetCurrentLevel(),
                 subjectRepository.resetSubject(),
                 Navigator.push(
@@ -384,12 +385,12 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
           } else {
             loadSoundEffect(
                 'asset://lib/lib/assets/soundEffects/respostaErradaSom.mp3');
-            QuickAlert.show(
-                context: context,
-                type: QuickAlertType.error,
-                title: 'Resposta Errada',
-                text: 'Tente novamente!',
-                confirmBtnText: 'Ok');
+            PanaraInfoDialog.show(context,
+                title: "Resposta errada",
+                message: 'Tente novamente!',
+                panaraDialogType: PanaraDialogType.error,
+                buttonText: 'Ok',
+                onTapDismiss: () => {Navigator.pop(context)});
           }
         },
         style: ElevatedButton.styleFrom(

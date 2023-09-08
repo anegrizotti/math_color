@@ -5,7 +5,7 @@ import 'package:math_color/pages/select_subject_screen.dart';
 import 'package:math_color/repositories/subject_repository.dart';
 import 'package:math_color/repositories/levels_repository.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:quickalert/quickalert.dart';
+import 'package:panara_dialogs/panara_dialogs.dart';
 
 class LevelsScreen extends StatelessWidget {
   const LevelsScreen({Key? key}) : super(key: key);
@@ -67,14 +67,15 @@ class LevelsScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.close),
             onPressed: () {
-              QuickAlert.show(
-                context: context,
-                type: QuickAlertType.confirm,
-                title: 'Deseja desistir?',
-                cancelBtnText: 'Cancelar',
-                onCancelBtnTap: () => {Navigator.pop(context)},
-                confirmBtnText: 'Desistir',
-                onConfirmBtnTap: () => {
+              PanaraConfirmDialog.show(
+                context,
+                title: "Deseja desistir?",
+                message: '',
+                panaraDialogType: PanaraDialogType.warning,
+                confirmButtonText: 'Desistir',
+                cancelButtonText: 'Cancelar',
+                onTapCancel: () => {Navigator.pop(context)},
+                onTapConfirm: () => {
                   levelsRepository.resetCurrentLevel(),
                   subjectRepository.resetSubject(),
                   Navigator.push(
