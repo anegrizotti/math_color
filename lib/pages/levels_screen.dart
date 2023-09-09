@@ -21,10 +21,17 @@ class LevelsScreen extends StatelessWidget {
 
     int currentLevel = levelsRepository.currentLevel;
 
+    void loadSoundEffect(soundEffect) async {
+      final sound = await player.setUrl(soundEffect);
+      player.play();
+    }
+
     Widget buildLevelButton(int level) {
       return ElevatedButton(
         onPressed: currentLevel == level
             ? () {
+                loadSoundEffect(
+                        'asset://lib/lib/assets/soundEffects/levelsSom.mp3');              
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => MathQuizScreen()),
@@ -50,11 +57,6 @@ class LevelsScreen extends StatelessWidget {
           ),
         ),
       );
-    }
-
-    void loadSoundEffect(soundEffect) async {
-      final sound = await player.setUrl(soundEffect);
-      player.play();
     }
 
     return Scaffold(

@@ -86,14 +86,15 @@ flutter:
     - lib/assets/imagens/colorImages/sereia.png
     - lib/assets/imagens/colorImages/solLua.png
     - lib/assets/imagens/colorImages/sorvete.png
-    - lib/assets/imagens/colorImages/tartaruga.png
     - lib/assets/imagens/questionsImages/questaoDinheiro2.png
     - lib/assets/imagens/questionsImages/questaoDinheiro3.png
     - lib/assets/imagens/questionsImages/questaoDinheiro4.png
     - lib/assets/imagens/questionsImages/questaoTempo3.png
     - lib/assets/imagens/questionsImages/questaoTempo4.png
     - lib/assets/imagens/questionsImages/questaoContagem3.png
+    - lib/assets/soundEffects/inicioSom.mp3
     - lib/assets/soundEffects/concluidoSom.mp3
+    - lib/assets/soundEffects/levelsSom.mp3
     - lib/assets/soundEffects/proximoSom.mp3
     - lib/assets/soundEffects/respostaErradaSom.mp3
 

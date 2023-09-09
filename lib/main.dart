@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:math_color/pages/select_subject_screen.dart';
 import 'package:math_color/repositories/levels_repository.dart';
 import 'package:path/path.dart' as path;
@@ -13,12 +14,14 @@ void main() async {
   levelsRepository.resetCurrentLevel();
 
   final dbHelper = DatabaseHelper();
-  await dbHelper.resetDatabase(); // deve ser tirado depois. apenas para fins de testes
+  await dbHelper
+      .resetDatabase(); // deve ser tirado depois. apenas para fins de testes
   await dbHelper.initializeDatabase();
 
   await dbHelper.insertQuestions(additionQuestions, 'addition_questions');
   await dbHelper.insertQuestions(subtractionQuestions, 'subtraction_questions');
-  await dbHelper.insertQuestions(multiplicationQuestions, 'multiplication_questions');
+  await dbHelper.insertQuestions(
+      multiplicationQuestions, 'multiplication_questions');
   await dbHelper.insertQuestions(divisionQuestions, 'division_questions');
   await dbHelper.insertQuestions(countingQuestions, 'counting_questions');
   await dbHelper.insertQuestions(timeQuestions, 'time_questions');
@@ -29,6 +32,12 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  void loadSoundEffect(soundEffect) async {
+    final player = AudioPlayer();
+    final sound = await player.setUrl(soundEffect);
+    player.play();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,6 +104,8 @@ class MyApp extends StatelessWidget {
                       padding: EdgeInsets.only(bottom: screenHeight * 0.06),
                       child: ElevatedButton(
                         onPressed: () {
+                          loadSoundEffect(
+                              'asset://lib/lib/assets/soundEffects/inicioSom.mp3');
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -119,7 +130,8 @@ class MyApp extends StatelessWidget {
                     SizedBox(height: screenHeight * 0.03),
                     Expanded(
                       child: Image.asset(
-                        path.join('lib', 'assets', 'imagens', 'pagesImages','telainicial.png'),
+                        path.join('lib', 'assets', 'imagens', 'pagesImages',
+                            'telainicial.png'),
                         fit: BoxFit.contain,
                         height: screenHeight * 0.3,
                       ),
