@@ -148,8 +148,8 @@ const List<Map<String, dynamic>> timeQuestions = [
   },
   {
     "question": "Quantos minutos tem uma hora?",
-    "correctAnswer": "60 minutos",
-    "options": ["30 minutos", "60 minutos", "90 minutos"],
+    "correctAnswer": "60min",
+    "options": ["30min", "60min", "90min"],
   },
   {
     "question": "Qual o dia da semana está marcando no calendário abaixo?",
@@ -159,12 +159,12 @@ const List<Map<String, dynamic>> timeQuestions = [
   },
   {
     "question": "Qual horário o relógio abaixo está marcando?",
-    "correctAnswer": "1 hora e 30 minutos",
-    "options": ["12 horas", "1 hora e 15 minutos", "1 hora e 30 minutos"],
+    "correctAnswer": "1h e 30min",
+    "options": ["12h", "1h e 15min", "1h e 30min"],
     "imageUrl": "questaoTempo4.png",
   },
   {
-    "question": "Wilson gosta muito de ler. Ela leu dois livros em 3 semanas. Quantos dias Wilson levou para ler os livros?",
+    "question": "Wilson gosta muito de ler. Ele leu dois livros em 3 semanas. Quantos dias Wilson levou para ler os livros?",
     "correctAnswer": "21 dias",
     "options": ["14 dias", "18 dias", "21 dias"],
   },

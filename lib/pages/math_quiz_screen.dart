@@ -3,13 +3,14 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_color/pages/select_subject_screen.dart';
-import '../database/db.dart';
-import '../repositories/levels_repository.dart';
-import '../repositories/subject_repository.dart';
-import 'levels_screen.dart';
 import 'package:path/path.dart' as path;
 import 'package:just_audio/just_audio.dart';
 import 'package:panara_dialogs/panara_dialogs.dart';
+
+import '../database/db.dart';
+import '../repositories/levels_repository.dart';
+import '../repositories/subject_repository.dart';
+import '../pages/levels_screen.dart';
 
 class MathQuizScreen extends StatefulWidget {
   @override
@@ -47,12 +48,11 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
                 buildQuestionRow(
                     screenHeight, screenWidth, currentLevel, subject),
                 buildImageIfNeeded(screenHeight, screenWidth),
-                buildOptionsRow(
-                    screenHeight, screenWidth, currentLevel, subject),
               ],
             ),
           ),
           Spacer(),
+          buildOptionsRow(screenHeight, screenWidth, currentLevel, subject),
           buildNextButton(screenHeight, screenWidth),
         ],
       ),
@@ -179,9 +179,18 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
                 } else if (snapshot.hasError) {
                   return Text("Erro ao carregar a pergunta");
                 } else {
+                  String question = snapshot.data ?? "No question";
+                  double fontSize = 50;
+
+                  if (question.length > 50) {
+                    fontSize = 30;
+                  }
+
                   return Text(
-                    snapshot.data ?? "No question",
-                    style: TextStyle(fontSize: 50),
+                    question,
+                    style: TextStyle(
+                      fontSize: fontSize,
+                    ),
                     overflow: TextOverflow.ellipsis,
                     softWrap: true,
                     maxLines: 5,
@@ -213,7 +222,9 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
             children: [
               Text(
                 questionText,
-                style: TextStyle(fontSize: 50),
+                style: TextStyle(
+                  fontSize: questionText.length >= 4 ? 30 : 50,
+                ),
               ),
             ],
           ),
@@ -229,38 +240,59 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
     Future<String?> imageFuture = getImageFromDatabase(currentLevel, subject);
 
     if (imageFuture != null) {
-      return FutureBuilder<String?>(
-        future: imageFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
-          } else if (snapshot.hasError) {
-            return Text("Erro ao carregar a imagem");
-          } else if (snapshot.data != null) {
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(10),
-                  child: Image.asset(
-                    path.join(
-                      'lib',
-                      'assets',
-                      'imagens',
-                      'questionsImages',
-                      snapshot.data!,
-                    ),
-                    width: screenWidth * 0.7,
-                    height: screenHeight * 0.3,
-                    fit: BoxFit.contain,
-                  ),
-                ),
-              ],
-            );
-          } else {
-            return SizedBox(height: screenHeight * 0.1);
-          }
-        },
+      return Padding(
+        padding: EdgeInsets.only(top: 20), // Adicione o padding aqui
+        child: FutureBuilder<String?>(
+          future: imageFuture,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator();
+            } else if (snapshot.hasError) {
+              return Text("Erro ao carregar a imagem");
+            } else if (snapshot.data != null) {
+              return LayoutBuilder(
+                builder: (context, constraints) {
+                  double maxHeight = screenHeight * 0.2;
+                  double minHeight = screenHeight * 0.2;
+
+                  double imageHeight = constraints.maxHeight;
+                  if (imageHeight > maxHeight) {
+                    imageHeight = maxHeight;
+                  } else if (imageHeight < minHeight) {
+                    imageHeight = minHeight;
+                  }
+
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        constraints: BoxConstraints(
+                          minHeight: minHeight,
+                          maxHeight: maxHeight,
+                        ),
+                        child: Image.asset(
+                          path.join(
+                            'lib',
+                            'assets',
+                            'imagens',
+                            'questionsImages',
+                            snapshot.data!,
+                          ),
+                          width: screenWidth * 0.7,
+                          height: imageHeight,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              );
+            } else {
+              return SizedBox(height: screenHeight * 0.1);
+            }
+          },
+        ),
       );
     } else {
       return SizedBox(height: screenHeight * 0.1);
@@ -293,6 +325,12 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
 
   Widget buildOptionButton(
       double screenHeight, double screenWidth, String optionText) {
+    double fontSize = screenHeight * 0.05;
+
+    if (optionText.length > 6) {
+      fontSize = screenHeight * 0.02;
+    }
+
     return ElevatedButton(
       onPressed: () {
         updateColorQuestionMark(optionText, Color(0xFFC7EBF2));
@@ -308,7 +346,7 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
       ),
       child: Text(
         optionText,
-        style: TextStyle(fontSize: screenHeight * 0.05),
+        style: TextStyle(fontSize: fontSize),
       ),
     );
   }
@@ -349,11 +387,19 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
             children: [
               Expanded(
                 flex: 2,
-                child: buildOptionButton(screenHeight, screenWidth, options[0]),
+                child: Padding(
+                  padding: EdgeInsets.only(right: 5),
+                  child:
+                      buildOptionButton(screenHeight, screenWidth, options[0]),
+                ),
               ),
               Expanded(
                 flex: 2,
-                child: buildOptionButton(screenHeight, screenWidth, options[1]),
+                child: Padding(
+                  padding: EdgeInsets.only(right: 5),
+                  child:
+                      buildOptionButton(screenHeight, screenWidth, options[1]),
+                ),
               ),
               Expanded(
                 flex: 2,
@@ -369,42 +415,46 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
   }
 
   Widget buildNextButton(double screenHeight, double screenWidth) {
-    return Container(
-      width: screenWidth,
-      color: Color(0xFFFC7EBF2),
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-      child: ElevatedButton(
-        onPressed: () {
-          loadSoundEffect('asset://lib/lib/assets/soundEffects/proximoSom.mp3');
-          if (isAnswerCorrect) {
-            levelsRepository.completeLevel();
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => LevelsScreen()),
-            );
-          } else {
+    return Padding(
+      padding: EdgeInsets.only(top: 20),
+      child: Container(
+        width: screenWidth,
+        color: Color(0xFFFC7EBF2),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+        child: ElevatedButton(
+          onPressed: () {
             loadSoundEffect(
-                'asset://lib/lib/assets/soundEffects/respostaErradaSom.mp3');
-            PanaraInfoDialog.show(context,
-                title: "Resposta errada",
-                message: 'Tente novamente!',
-                panaraDialogType: PanaraDialogType.error,
-                buttonText: 'Ok',
-                onTapDismiss: () => {Navigator.pop(context)});
-          }
-        },
-        style: ElevatedButton.styleFrom(
-          primary: Color(0xFFEBA1CE),
-          onPrimary: Colors.black,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(screenHeight * 0.04),
-            side: BorderSide(color: Colors.black, width: 2),
+                'asset://lib/lib/assets/soundEffects/proximoSom.mp3');
+            if (isAnswerCorrect) {
+              levelsRepository.completeLevel();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LevelsScreen()),
+              );
+            } else {
+              loadSoundEffect(
+                  'asset://lib/lib/assets/soundEffects/respostaErradaSom.mp3');
+              PanaraInfoDialog.show(context,
+                  title: "Resposta errada",
+                  message: 'Tente novamente!',
+                  panaraDialogType: PanaraDialogType.error,
+                  buttonText: 'Ok',
+                  onTapDismiss: () => {Navigator.pop(context)});
+            }
+          },
+          style: ElevatedButton.styleFrom(
+            primary: Color(0xFFEBA1CE),
+            onPrimary: Colors.black,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(screenHeight * 0.04),
+              side: BorderSide(color: Colors.black, width: 2),
+            ),
+            minimumSize: Size(screenWidth, screenHeight * 0.08),
           ),
-          minimumSize: Size(screenWidth, screenHeight * 0.08),
-        ),
-        child: Text(
-          'PRÓXIMO',
-          style: TextStyle(fontSize: screenHeight * 0.035),
+          child: Text(
+            'PRÓXIMO',
+            style: TextStyle(fontSize: screenHeight * 0.035),
+          ),
         ),
       ),
     );
