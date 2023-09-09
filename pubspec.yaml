@@ -67,6 +67,7 @@ flutter:
     - lib/assets/imagens/pagesImages/divisao.png
     - lib/assets/imagens/pagesImages/tempo.png
     - lib/assets/imagens/pagesImages/dinheiro.png
+    - lib/assets/imagens/pagesImages/telaCaminho.png
     - lib/assets/imagens/colorImages/astronauta.png
     - lib/assets/imagens/colorImages/cachorro1.png
     - lib/assets/imagens/colorImages/cachorro2.png

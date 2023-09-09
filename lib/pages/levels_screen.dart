@@ -58,9 +58,8 @@ class LevelsScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: Color(0xFFB6D993),
       appBar: AppBar(
-        backgroundColor: Color(0xFFFFF197),
+        backgroundColor: Color(0xFFFFF197), // Torna a AppBar transparente
         elevation: 0,
         automaticallyImplyLeading: false,
         actions: [
@@ -91,7 +90,14 @@ class LevelsScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('lib/assets/imagens/pagesImages/telaCaminho.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+      child: Column(
         children: [
           Container(
             height: screenHeight * 0.15,
@@ -188,6 +194,6 @@ class LevelsScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ));
   }
 }
