@@ -125,15 +125,41 @@ class LevelsScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 30),
-          // Cria botões de nível dinamicamente
-          for (int i = 1; i <= 5; i++)
-            Column(
+          SizedBox(height: screenHeight * 0.01),
+          // Cria botões de nível de forma personalizada
+          Container(
+            height: screenHeight * 0.65,
+            child: Stack(
+              alignment: Alignment.center,
               children: [
-                buildLevelButton(i),
-                SizedBox(height: screenHeight * 0.035),
+                Positioned(
+                  top: screenHeight * 0.05,
+                  left: screenWidth * 0.25,
+                  child: buildLevelButton(1),
+                ),
+                Positioned(
+                  top: screenHeight * 0.15,
+                  right: screenWidth * 0.15,
+                  child: buildLevelButton(2),
+                ),
+                Positioned(
+                  top: screenHeight * 0.29,
+                  left: screenWidth * 0.18,
+                  child: buildLevelButton(3),
+                ),
+                Positioned(
+                  top: screenHeight * 0.37,
+                  left: screenWidth * 0.59,
+                  child: buildLevelButton(4),
+                ),
+                Positioned(
+                  top: screenHeight * 0.55,
+                  child: buildLevelButton(5),
+                ),
               ],
             ),
+          ),
+          SizedBox(height: screenHeight * 0.03),
           ElevatedButton(
             onPressed: currentLevel == 6
                 ? () {
