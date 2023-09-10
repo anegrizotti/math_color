@@ -424,7 +424,7 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
         child: ElevatedButton(
           onPressed: () {
             loadSoundEffect(
-                'asset://lib/lib/assets/soundEffects/proximoSom.mp3');
+                'asset://lib/lib/assets/soundEffects/nextSom.mp3');
             if (isAnswerCorrect) {
               levelsRepository.completeLevel();
               Navigator.push(
@@ -433,7 +433,7 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
               );
             } else {
               loadSoundEffect(
-                  'asset://lib/lib/assets/soundEffects/respostaErradaSom.mp3');
+                  'asset://lib/lib/assets/soundEffects/erroSom.mp3');
               PanaraInfoDialog.show(context,
                   title: "Resposta errada",
                   message: 'Tente novamente!',

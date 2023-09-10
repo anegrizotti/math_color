@@ -95,8 +95,8 @@ flutter:
     - lib/assets/soundEffects/inicioSom.mp3
     - lib/assets/soundEffects/concluidoSom.mp3
     - lib/assets/soundEffects/levelsSom.mp3
-    - lib/assets/soundEffects/proximoSom.mp3
-    - lib/assets/soundEffects/respostaErradaSom.mp3
+    - lib/assets/soundEffects/nextSom.mp3
+    - lib/assets/soundEffects/erroSom.mp3
 
   fonts:
   - family: bungee
