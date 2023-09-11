@@ -34,9 +34,13 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   void loadSoundEffect(soundEffect) async {
-    final player = AudioPlayer();
-    final sound = await player.setUrl(soundEffect);
-    player.play();
+    try {
+      final player = AudioPlayer();
+      final sound = await player.setUrl(soundEffect);
+      player.play();
+    } catch (e) {
+      return;
+    }
   }
 
   @override

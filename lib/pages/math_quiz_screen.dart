@@ -60,8 +60,12 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
   }
 
   void loadSoundEffect(soundEffect) async {
-    final sound = await player.setUrl(soundEffect);
-    player.play();
+    try {
+      final sound = await player.setUrl(soundEffect);
+      player.play();
+    } catch (e) {
+      return;
+    }
   }
 
   AppBar buildAppBar() {
@@ -73,6 +77,7 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
         IconButton(
           icon: Icon(Icons.close),
           onPressed: () {
+            loadSoundEffect('asset://lib/lib/assets/soundEffects/desistirSom.mp3');
             PanaraConfirmDialog.show(
               context,
               title: "Deseja desistir?",
@@ -334,6 +339,8 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
     return ElevatedButton(
       onPressed: () {
         updateColorQuestionMark(optionText, Color(0xFFC7EBF2));
+        loadSoundEffect(
+            'asset://lib/lib/assets/soundEffects/selecionaRespostaSom.mp3');
       },
       style: ElevatedButton.styleFrom(
         primary: Color(0xFFB6D993),
@@ -423,8 +430,7 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
         child: ElevatedButton(
           onPressed: () {
-            loadSoundEffect(
-                'asset://lib/lib/assets/soundEffects/nextSom.mp3');
+            loadSoundEffect('asset://lib/lib/assets/soundEffects/nextSom.mp3');
             if (isAnswerCorrect) {
               levelsRepository.completeLevel();
               Navigator.push(

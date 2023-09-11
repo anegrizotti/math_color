@@ -92,11 +92,13 @@ flutter:
     - lib/assets/imagens/questionsImages/questaoTempo3.png
     - lib/assets/imagens/questionsImages/questaoTempo4.png
     - lib/assets/imagens/questionsImages/questaoContagem3.png
-    - lib/assets/soundEffects/inicioSom.mp3
     - lib/assets/soundEffects/concluidoSom.mp3
+    - lib/assets/soundEffects/desistirSom.mp3
+    - lib/assets/soundEffects/erroSom.mp3
+    - lib/assets/soundEffects/inicioSom.mp3
     - lib/assets/soundEffects/levelsSom.mp3
     - lib/assets/soundEffects/nextSom.mp3
-    - lib/assets/soundEffects/erroSom.mp3
+    - lib/assets/soundEffects/selecionaRespostaSom.mp3
 
   fonts:
   - family: bungee
