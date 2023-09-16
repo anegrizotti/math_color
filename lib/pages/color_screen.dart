@@ -26,7 +26,7 @@ class _ColorizeImageScreenState extends State<ColorizeImageScreen> {
     Colors.teal,
     Colors.indigo,
     Colors.black,
-    Color.fromARGB(255, 255, 162, 56),
+    Colors.white,
     Color(0xFFA4A4A4),
     Color(0xFF61210B),
     Color.fromARGB(255, 255, 211, 222),
@@ -54,8 +54,7 @@ class _ColorizeImageScreenState extends State<ColorizeImageScreen> {
   final List<Color> topColors = predefinedColors.sublist(0, 8);
   final List<Color> bottomColors = predefinedColors.sublist(8);
 
-  final double circlePadding = 8.0; // Espaçamento entre os círculos
-
+  final double circlePadding = 8.0;
   showDialog(
     context: context,
     builder: (BuildContext context) {

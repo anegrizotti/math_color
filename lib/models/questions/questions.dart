@@ -57,22 +57,22 @@ const List<Map<String, dynamic>> subtractionQuestions = [
 
 const List<Map<String, dynamic>> multiplicationQuestions = [
   {
-    "question": "9 * 10",
+    "question": "9 × 10",
     "correctAnswer": "90",
     "options": ["72", "90", "100"],
   },
   {
-    "question": "12 * 3",
+    "question": "12 × 3",
     "correctAnswer": "36",
     "options": ["24", "30", "36"],
   },
   {
-    "question": "22 * 6",
+    "question": "22 × 6",
     "correctAnswer": "132",
     "options": ["110", "120", "132"],
   },
   {
-    "question": "35 * 12",
+    "question": "35 × 12",
     "correctAnswer": "420",
     "options": ["400", "420", "450"],
   },
@@ -85,22 +85,22 @@ const List<Map<String, dynamic>> multiplicationQuestions = [
 
 const List<Map<String, dynamic>> divisionQuestions = [
   {
-    "question": "6 : 3",
+    "question": "6 ÷ 3",
     "correctAnswer": "2",
     "options": ["1", "2", "4"],
   },
   {
-    "question": "12 : 4",
+    "question": "12 ÷ 4",
     "correctAnswer": "3",
     "options": ["2", "3", "4"],
   },
   {
-    "question": "123 : 3",
+    "question": "123 ÷ 3",
     "correctAnswer": "41",
     "options": ["41", "45", "51"],
   },
   {
-    "question": "303 : 3",
+    "question": "303 ÷ 3",
     "correctAnswer": "101",
     "options": ["97", "101", "117"],
   },
@@ -164,7 +164,7 @@ const List<Map<String, dynamic>> timeQuestions = [
     "imageUrl": "questaoTempo4.png",
   },
   {
-    "question": "Wilson gosta muito de ler. Ele leu dois livros em 3 semanas. Quantos dias Wilson levou para ler os livros?",
+    "question": "Wilson gosta muito de ler. Ele leu dois livros em 3 semanas. Quantos dias Wilson levou para ler os dois livros?",
     "correctAnswer": "21 dias",
     "options": ["14 dias", "18 dias", "21 dias"],
   },
@@ -179,7 +179,7 @@ const List<Map<String, dynamic>> moneyQuestions = [
   {
     "question": "Qual nota tem o maior valor?",
     "correctAnswer": "R\$50,00",
-    "options": ["R\$20,00", "R\$50,00", "R\$100,00"],
+    "options": ["R\$20,00", "R\$50,00", "R\$5,00"],
     "imageUrl": "questaoDinheiro2.png",
   },
   {
