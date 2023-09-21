@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.19.6 <3.0.0'
+  sdk: '>=2.15.0 <3.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -40,7 +40,7 @@ dependencies:
   floodfill_image: ^0.0.8
   flutter_icons: ^1.1.0
   just_audio: ^0.9.34
-  panara_dialogs: ^0.1.4
+  giff_dialog: ^1.0.1
 
 dev_dependencies:
   flutter_test:
@@ -99,6 +99,8 @@ flutter:
     - lib/assets/soundEffects/levelsSom.mp3
     - lib/assets/soundEffects/nextSom.mp3
     - lib/assets/soundEffects/selecionaRespostaSom.mp3
+    - lib/assets/gifs/thinking.gif
+    - lib/assets/gifs/error.gif
 
   fonts:
   - family: bungee

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:giff_dialog/giff_dialog.dart';
+import 'package:path/path.dart' as path;
 import 'package:math_color/pages/color_screen.dart';
 import 'package:math_color/pages/math_quiz_screen.dart';
 import 'package:math_color/pages/select_subject_screen.dart';
 import 'package:math_color/repositories/subject_repository.dart';
 import 'package:math_color/repositories/levels_repository.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:panara_dialogs/panara_dialogs.dart';
 
 class LevelsScreen extends StatelessWidget {
   const LevelsScreen({Key? key}) : super(key: key);
@@ -72,25 +73,47 @@ class LevelsScreen extends StatelessWidget {
             IconButton(
               icon: Icon(Icons.close),
               onPressed: () {
-                loadSoundEffect('asset://lib/lib/assets/soundEffects/desistirSom.mp3');
-                PanaraConfirmDialog.show(
-                  context,
-                  title: "Deseja desistir?",
-                  message: '',
-                  panaraDialogType: PanaraDialogType.warning,
-                  confirmButtonText: 'Desistir',
-                  cancelButtonText: 'Cancelar',
-                  onTapCancel: () => {Navigator.pop(context)},
-                  onTapConfirm: () => {
-                    levelsRepository.resetCurrentLevel(),
-                    subjectRepository.resetSubject(),
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => SelectSubjectScreen()),
-                    ),
-                  },
-                );
+                loadSoundEffect(
+                    'asset://lib/lib/assets/soundEffects/desistirSom.mp3');
+                showDialog(
+                    context: context,
+                    builder: (_) => AssetGiffDialog(
+                          image: Image.asset(
+                            path.join('lib', 'assets', 'gifs', 'thinking.gif'),
+                          ),
+                          title: Text(
+                            'Deseja desistir?',
+                            style: TextStyle(
+                              fontSize: 30.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          onOkButtonPressed: () {
+                            levelsRepository.resetCurrentLevel();
+                            subjectRepository.resetSubject();
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SelectSubjectScreen(),
+                              ),
+                            );
+                          },
+                          entryAnimation: EntryAnimation.bottomRight,
+                          buttonOkColor: Color(0xFFEBA1CE),
+                          cornerRadius: 8.0,
+                          buttonRadius: 8.0,
+                          buttonOkText: const Text(
+                            'OK',
+                            style: TextStyle(
+                              fontSize: 40,
+                              color: Colors.white,
+                            ),
+                          ),
+                          buttonCancelText: Text(
+                            'Cancelar',
+                            style: TextStyle(fontSize: 40, color: Colors.white),
+                          ),
+                        ));
               },
               iconSize: screenWidth * 0.05,
               color: Color(0xFFFF0000),

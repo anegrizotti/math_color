@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:math_color/pages/select_subject_screen.dart';
 import 'package:path/path.dart' as path;
 import 'package:just_audio/just_audio.dart';
-import 'package:panara_dialogs/panara_dialogs.dart';
+import 'package:giff_dialog/giff_dialog.dart';
 
 import '../database/db.dart';
 import '../repositories/levels_repository.dart';
@@ -77,25 +77,47 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
         IconButton(
           icon: Icon(Icons.close),
           onPressed: () {
-            loadSoundEffect('asset://lib/lib/assets/soundEffects/desistirSom.mp3');
-            PanaraConfirmDialog.show(
-              context,
-              title: "Deseja desistir?",
-              message: '',
-              panaraDialogType: PanaraDialogType.warning,
-              confirmButtonText: 'Desistir',
-              cancelButtonText: 'Cancelar',
-              onTapCancel: () => {Navigator.pop(context)},
-              onTapConfirm: () => {
-                levelsRepository.resetCurrentLevel(),
-                subjectRepository.resetSubject(),
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => SelectSubjectScreen()),
-                ),
-              },
-            );
+            loadSoundEffect(
+                'asset://lib/lib/assets/soundEffects/desistirSom.mp3');
+            showDialog(
+                context: context,
+                builder: (_) => AssetGiffDialog(
+                      image: Image.asset(
+                        path.join('lib', 'assets', 'gifs', 'thinking.gif'),
+                      ),
+                      title: Text(
+                        'Deseja desistir?',
+                        style: TextStyle(
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      onOkButtonPressed: () {
+                        levelsRepository.resetCurrentLevel();
+                        subjectRepository.resetSubject();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SelectSubjectScreen(),
+                          ),
+                        );
+                      },
+                      entryAnimation: EntryAnimation.bottomRight,
+                      buttonOkColor: Color(0xFFEBA1CE),
+                      cornerRadius: 8.0,
+                      buttonRadius: 8.0,
+                      buttonOkText: const Text(
+                        'OK',
+                        style: TextStyle(
+                          fontSize: 40,
+                          color: Colors.white,
+                        ),
+                      ),
+                      buttonCancelText: Text(
+                        'Cancelar',
+                        style: TextStyle(fontSize: 40, color: Colors.white),
+                      ),
+                    ));
           },
           color: Color(0xFFFF0000),
         ),
@@ -440,12 +462,40 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
             } else {
               loadSoundEffect(
                   'asset://lib/lib/assets/soundEffects/erroSom.mp3');
-              PanaraInfoDialog.show(context,
-                  title: "Resposta errada",
-                  message: 'Tente novamente!',
-                  panaraDialogType: PanaraDialogType.error,
-                  buttonText: 'Ok',
-                  onTapDismiss: () => {Navigator.pop(context)});
+              showDialog(
+                context: context,
+                builder: (_) => AssetGiffDialog(
+                  image: Image.asset(
+                    path.join('lib', 'assets', 'gifs', 'error.gif'),
+                  ),
+                  title: Text(
+                    'Resposta errada.',
+                    style: TextStyle(
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  description: Text(
+                    'Tente novamente!',
+                    style: TextStyle(fontSize: 25),
+                  ),
+                  onlyOkButton: true,
+                  onOkButtonPressed: () {
+                    Navigator.pop(context);
+                  },
+                  entryAnimation: EntryAnimation.bottomRight,
+                  buttonOkColor: Color(0xFFEBA1CE),
+                  cornerRadius: 8.0,
+                  buttonRadius: 8.0,
+                  buttonOkText: const Text(
+                    'OK',
+                    style: TextStyle(
+                      fontSize: 40,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              );
             }
           },
           style: ElevatedButton.styleFrom(
