@@ -107,7 +107,7 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
                       cornerRadius: 8.0,
                       buttonRadius: 8.0,
                       buttonOkText: const Text(
-                        'OK',
+                        'Sim',
                         style: TextStyle(
                           fontSize: 40,
                           color: Colors.white,
