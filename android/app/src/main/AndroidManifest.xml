@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.math_color">
    <application
-        android:label="math_color"
+        android:label="MATH COLOR"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
